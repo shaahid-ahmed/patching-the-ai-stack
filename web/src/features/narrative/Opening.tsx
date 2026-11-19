@@ -32,7 +32,7 @@ export function Opening({ q3 }: { q3: FigureQ3 }) {
       <HeroStrip q3={q3} />
 
       <p className={styles.byline}>
-        <span>Shaahid Mohammed</span>
+        <span>Shaahid Ahmed</span>
         <span>Dealing with Data · NYU</span>
         <span>Data through {month(manifest.observedThrough)}</span>
       </p>
