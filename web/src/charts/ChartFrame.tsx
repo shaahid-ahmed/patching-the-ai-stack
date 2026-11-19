@@ -1,3 +1,4 @@
+import { NO_VALUE } from "@/lib/format";
 import { useId, useState, type ReactNode } from "react";
 import { Link } from "react-router";
 
@@ -91,7 +92,7 @@ export function ChartFrame({
                     key={column.key}
                     className={column.numeric ? styles.num : undefined}
                   >
-                    {row[column.key] ?? ", "}
+                    {row[column.key] ?? NO_VALUE}
                   </td>
                 ))}
               </tr>

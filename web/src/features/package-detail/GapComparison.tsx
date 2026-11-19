@@ -12,7 +12,7 @@ import { chrome, token } from "@/charts/tokens";
 import { useChartSize, useIsNarrow } from "@/charts/useChartSize";
 import { loadFigure } from "@/data/client";
 import type { FigureQ3, PackageDetail } from "@/data/types";
-import { count, days, gapPhrase } from "@/lib/format";
+import { count, days, gapPhrase, NO_VALUE } from "@/lib/format";
 
 const DOMAIN_LOW = -120;
 const DOMAIN_HIGH = 240;
@@ -80,7 +80,7 @@ export function GapComparison({ data }: { data: PackageDetail }) {
       .sort((a, b) => (a.gap ?? 0) - (b.gap ?? 0))
       .map((a) => ({
         id: a.id,
-        gap: a.gap !== null ? days(Math.round(a.gap)) : ", ",
+        gap: a.gap !== null ? days(Math.round(a.gap)) : NO_VALUE,
         direction: gapPhrase(a.gap),
       })),
   };

@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router";
 import { categoryColor, severityColor } from "@/charts/tokens";
 import { packageNames } from "@/data/client";
 import type { PackageDetail as PackageDetailData, Severity } from "@/data/types";
-import { attackClassLabel, count, days, month } from "@/lib/format";
+import { attackClassLabel, count, days, month, NO_VALUE } from "@/lib/format";
 
 import { AdvisoryList } from "./AdvisoryList";
 import { GapComparison } from "./GapComparison";
@@ -78,7 +78,7 @@ export function PackageDetail() {
             <span className={styles.fact}>
               Median gap{" "}
               <strong>
-                {data.gap.median === null ? ", " : `${days(data.gap.median)} days`}
+                {data.gap.median === null ? NO_VALUE : `${days(data.gap.median)} days`}
               </strong>
             </span>
             {cadence !== null ? (

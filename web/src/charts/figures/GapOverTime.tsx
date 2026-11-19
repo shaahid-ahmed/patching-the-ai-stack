@@ -21,7 +21,7 @@ import { chrome, token } from "@/charts/tokens";
 import { useChartSize, useIsNarrow } from "@/charts/useChartSize";
 import { useInView } from "@/charts/useInView";
 import type { FigureQ3 } from "@/data/types";
-import { count, days } from "@/lib/format";
+import { count, days, NO_VALUE } from "@/lib/format";
 
 export function GapOverTime({ data }: { data: FigureQ3 }) {
   const { ref, width, height, ready } = useChartSize(0.44, 240, 360);
@@ -88,9 +88,9 @@ export function GapOverTime({ data }: { data: FigureQ3 }) {
     rows: periods.map((p) => ({
       label: p.label,
       n: p.box.n,
-      median: p.box.median !== undefined ? days(p.box.median) : ", ",
-      q1: p.box.q1 !== undefined ? days(p.box.q1) : ", ",
-      q3: p.box.q3 !== undefined ? days(p.box.q3) : ", ",
+      median: p.box.median !== undefined ? days(p.box.median) : NO_VALUE,
+      q1: p.box.q1 !== undefined ? days(p.box.q1) : NO_VALUE,
+      q3: p.box.q3 !== undefined ? days(p.box.q3) : NO_VALUE,
     })),
   };
 

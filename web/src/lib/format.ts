@@ -12,13 +12,17 @@ const oneDecimal = new Intl.NumberFormat("en-GB", {
   maximumFractionDigits: 1,
 });
 
+/** The marker for a value that does not exist, as opposed to one that is zero.
+ * An en dash, which is the table convention and is not an em dash. */
+export const NO_VALUE = "\u2013";
+
 export const count = (value: number) => integer.format(value);
 
 export const days = (value: number) =>
   Number.isInteger(value) ? integer.format(value) : oneDecimal.format(value);
 
 export function percent(value: number | null, digits = 0): string {
-  if (value === null || Number.isNaN(value)) return ", ";
+  if (value === null || Number.isNaN(value)) return NO_VALUE;
   return `${(value * 100).toFixed(digits)}%`;
 }
 
@@ -33,7 +37,7 @@ export function gapPhrase(gap: number | null): string {
 
 /** The short form for tables, where the column header carries the direction. */
 export function gapShort(gap: number | null): string {
-  if (gap === null) return ", ";
+  if (gap === null) return NO_VALUE;
   const rounded = Math.round(gap);
   return rounded > 0 ? `+${days(rounded)}` : days(rounded);
 }
@@ -73,7 +77,7 @@ export const severityRank: Record<Severity, number> = {
 
 /** EPSS is a probability in [0,1]; below 0.1% a percentage reads as zero. */
 export function exploitProbability(value: number | null): string {
-  if (value === null) return ", ";
+  if (value === null) return NO_VALUE;
   if (value < 0.001) return "<0.1%";
   return `${(value * 100).toFixed(1)}%`;
 }

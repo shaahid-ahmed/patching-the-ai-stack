@@ -10,7 +10,7 @@
 import { useId, useMemo, useState } from "react";
 
 import type { Facets } from "@/data/types";
-import { count } from "@/lib/format";
+import { count, NO_VALUE } from "@/lib/format";
 
 import type { FacetCounts } from "./filter";
 import { AI_LABELS } from "./facetLabels";
@@ -293,7 +293,7 @@ export function FilterPanel({
                 })
               }
             >
-              <option value="">{firstYear ?? ", "}</option>
+              <option value="">{firstYear ?? NO_VALUE}</option>
               {years.map((year) => (
                 <option key={year} value={year}>
                   {year}
@@ -312,7 +312,7 @@ export function FilterPanel({
                 })
               }
             >
-              <option value="">{lastYear ?? ", "}</option>
+              <option value="">{lastYear ?? NO_VALUE}</option>
               {years.map((year) => (
                 <option key={year} value={year}>
                   {year}

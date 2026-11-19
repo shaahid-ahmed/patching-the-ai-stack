@@ -56,8 +56,16 @@ h4 {
 p, li { max-inline-size: var(--measure); }
 p + p { margin-block-start: var(--rhythm); }
 
-ul, ol { padding-inline-start: 1.4em; }
-li + li { margin-block-start: calc(var(--rhythm) * 0.35); }
+/* Prose lists only. Every UI list on this site (package chips, filter facets,
+ * chart keys) is a <ul> with its own class, and these two rules were leaking
+ * into all of them: the indent pushed them off their container's left edge,
+ * and the sibling margin pushed every item except the first down inside its
+ * own row, so grid and flex rows did not line up. Scoping by :not([class])
+ * keeps the rules for authored prose lists and off component markup. */
+:where(ul, ol):not([class]) { padding-inline-start: 1.4em; }
+:where(ul, ol):not([class]) > li + li {
+  margin-block-start: calc(var(--rhythm) * 0.35);
+}
 
 /* Links are ink with a coloured underline rather than coloured text: coloured
  * body text inside a chart-heavy page competes with the data. */
@@ -155,9 +163,9 @@ svg text {
 
 .chart-key {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 1.1rem;
+  /* Block, not flex: the key wraps like a line of text, so it cannot strand a
+   * single swatch on its own row. */
+  display: block;
   margin: 0 0 0.9rem;
   padding: 0;
   font-family: var(--ff-ui);
@@ -169,6 +177,7 @@ svg text {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  margin-inline-end: 1.1rem;
 }
 
 .chart-key-swatch {

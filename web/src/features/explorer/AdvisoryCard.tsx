@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
 import { Link } from "react-router";
 
 import type { Advisory } from "@/data/types";
-import { attackClassLabel, date, exploitProbability, gapPhrase } from "@/lib/format";
+import { attackClassLabel, date, exploitProbability, gapPhrase, NO_VALUE } from "@/lib/format";
 
 import styles from "./AdvisoryCard.module.css";
 
@@ -23,8 +23,8 @@ export function AdvisoryCard({ row }: { row: Advisory }) {
         <span className={styles.alarm}>no patched version</span>
       ),
     },
-    { label: "Fix released", value: row.fixDate ? date(row.fixDate) : ", " },
-    { label: "CVSS", value: row.cvss !== null ? row.cvss.toFixed(1) : ", " },
+    { label: "Fix released", value: row.fixDate ? date(row.fixDate) : NO_VALUE },
+    { label: "CVSS", value: row.cvss !== null ? row.cvss.toFixed(1) : NO_VALUE },
     {
       label: "Exploit probability (30 days)",
       value: exploitProbability(row.epss),

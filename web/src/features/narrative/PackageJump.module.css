@@ -25,14 +25,37 @@
   outline-offset: 2px;
 }
 
+/* A grid, not flex-wrap. Sixteen names of very different lengths wrapped
+ * raggedly and stranded the last one alone on its own row; uniform columns
+ * make this read as an index. Four columns at full width, so 16 names fill
+ * exactly four rows. */
 .list {
   list-style: none;
   margin: 0.5rem 0 0;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
   gap: 0.4rem;
-  max-inline-size: 34rem;
+  max-inline-size: 44rem;
+}
+
+/* Four fixed columns once there is room, sized so the longest name
+ * (langchain-community) fits without truncating. Sixteen packages then fill
+ * exactly four rows. */
+@media (min-width: 48rem) {
+  .list {
+    grid-template-columns: repeat(4, 1fr);
+    max-inline-size: 50rem;
+  }
+}
+
+/* Two columns on a phone. The type drops a step so the longest name still
+ * fits a half-width cell rather than ellipsizing. */
+@media (max-width: 30rem) {
+  .chip {
+    font-size: 0.78rem;
+    padding-inline: 0.45em;
+  }
 }
 
 .chip {
@@ -44,7 +67,11 @@
   background: var(--color-surface-sunken);
   color: var(--color-text-secondary);
   text-decoration: none;
-  display: inline-block;
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .chip:hover {

@@ -25,7 +25,7 @@ import { chrome, token } from "@/charts/tokens";
 import { useChartSize, useIsNarrow } from "@/charts/useChartSize";
 import { useInView } from "@/charts/useInView";
 import type { FigureQ4 } from "@/data/types";
-import { count, days, spell } from "@/lib/format";
+import { count, days, spell, NO_VALUE } from "@/lib/format";
 
 type SortKey = "package" | "releases_per_year" | "median_gap";
 
@@ -183,15 +183,15 @@ export function ReleasePace({ data }: { data: FigureQ4 }) {
     rows: data.packages.map((row) => ({
       package: row.package,
       releases: row.releases_per_year,
-      gap: row.median_gap === null ? ", " : days(row.median_gap),
+      gap: row.median_gap === null ? NO_VALUE : days(row.median_gap),
       advisories: row.advisories,
     })),
   };
 
   const rho = data.test.rho;
   const p = data.test.p_value;
-  const subtitle = `Spearman rho = ${rho === null ? ", " : rho.toFixed(2)}, p = ${
-    p === null ? ", " : p.toFixed(2)
+  const subtitle = `Spearman rho = ${rho === null ? NO_VALUE : rho.toFixed(2)}, p = ${
+    p === null ? NO_VALUE : p.toFixed(2)
   }, n = ${data.test.n} packages`;
 
   // "One time in N" stated from the p-value in the data rather than typed into
@@ -323,7 +323,7 @@ export function ReleasePace({ data }: { data: FigureQ4 }) {
                           borderBottom: "1px solid var(--color-rule)",
                         }}
                       >
-                        {row.median_gap === null ? ", " : days(row.median_gap)}
+                        {row.median_gap === null ? NO_VALUE : days(row.median_gap)}
                       </td>
                     </tr>
                   ))}

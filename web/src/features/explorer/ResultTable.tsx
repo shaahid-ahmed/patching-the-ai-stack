@@ -15,6 +15,7 @@ import {
   days,
   gapPhrase,
   gapShort,
+  NO_VALUE,
 } from "@/lib/format";
 
 import { AdvisoryCard } from "./AdvisoryCard";
@@ -69,7 +70,7 @@ function RowBody({ row, open }: { row: Advisory; open: boolean }) {
       >
         {gapShort(row.gap)}
       </td>
-      <td className={styles.num}>{row.cvss !== null ? row.cvss.toFixed(1) : ", "}</td>
+      <td className={styles.num}>{row.cvss !== null ? row.cvss.toFixed(1) : NO_VALUE}</td>
       <td className={styles.summaryCell}>
         <span className={open ? undefined : styles.clamp}>{row.summary}</span>
       </td>

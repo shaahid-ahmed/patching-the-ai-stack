@@ -7,7 +7,7 @@
 import { useLoaderData } from "react-router";
 
 import type { Limitation, Methods } from "@/data/types";
-import { count, date, days, percent } from "@/lib/format";
+import { count, date, days, percent, NO_VALUE } from "@/lib/format";
 
 import styles from "./MethodsPage.module.css";
 
@@ -52,7 +52,7 @@ function LimitationSection({ limitation }: { limitation: Limitation }) {
                   <code>{example.package}</code>
                 </td>
                 <td className={styles.num}>
-                  {example.gap === null ? ", " : days(Math.round(example.gap))}
+                  {example.gap === null ? NO_VALUE : days(Math.round(example.gap))}
                 </td>
                 <td>{example.summary}</td>
               </tr>

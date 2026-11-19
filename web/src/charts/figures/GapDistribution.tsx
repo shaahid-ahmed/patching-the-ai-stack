@@ -26,7 +26,7 @@ import { chrome, token } from "@/charts/tokens";
 import { useChartSize, useIsNarrow } from "@/charts/useChartSize";
 import { useInView } from "@/charts/useInView";
 import type { FigureQ3 } from "@/data/types";
-import { count, days, gapPhrase } from "@/lib/format";
+import { count, days, gapPhrase, NO_VALUE } from "@/lib/format";
 
 const DOMAIN_LOW = -120;
 const DOMAIN_HIGH = 240;
@@ -104,9 +104,9 @@ export function GapDistribution({ data }: { data: FigureQ3 }) {
     rows: data.by_category.map((row) => ({
       label: row.label,
       n: row.box.n,
-      median: row.box.median !== undefined ? days(row.box.median) : ", ",
-      q1: row.box.q1 !== undefined ? days(row.box.q1) : ", ",
-      q3: row.box.q3 !== undefined ? days(row.box.q3) : ", ",
+      median: row.box.median !== undefined ? days(row.box.median) : NO_VALUE,
+      q1: row.box.q1 !== undefined ? days(row.box.q1) : NO_VALUE,
+      q3: row.box.q3 !== undefined ? days(row.box.q3) : NO_VALUE,
       noFix: row.no_fix,
     })),
   };
