@@ -80,7 +80,7 @@ export function GapComparison({ data }: { data: PackageDetail }) {
       .sort((a, b) => (a.gap ?? 0) - (b.gap ?? 0))
       .map((a) => ({
         id: a.id,
-        gap: a.gap !== null ? days(Math.round(a.gap)) : "—",
+        gap: a.gap !== null ? days(Math.round(a.gap)) : ", ",
         direction: gapPhrase(a.gap),
       })),
   };
@@ -161,7 +161,7 @@ export function GapComparison({ data }: { data: PackageDetail }) {
                   stroke={colors!.surface}
                   strokeWidth={1}
                 >
-                  <title>{`${advisory.id} — ${gapPhrase(advisory.gap)}`}</title>
+                  <title>{`${advisory.id}, ${gapPhrase(advisory.gap)}`}</title>
                 </circle>
               ))}
 

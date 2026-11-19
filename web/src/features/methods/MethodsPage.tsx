@@ -51,7 +51,7 @@ function LimitationSection({ limitation }: { limitation: Limitation }) {
                   <code>{example.package}</code>
                 </td>
                 <td className={styles.num}>
-                  {example.gap === null ? "—" : days(Math.round(example.gap))}
+                  {example.gap === null ? ", " : days(Math.round(example.gap))}
                 </td>
                 <td>{example.summary}</td>
               </tr>
@@ -114,8 +114,7 @@ export function MethodsPage() {
               the method describes: the pipeline runs the fallback whenever no{" "}
               <code>ANTHROPIC_API_KEY</code> is configured. The fallback is
               cruder, particularly for the <code>other</code> class, which
-              absorbs anything it cannot place —
-              {data.labelCheck.agreement === null
+              absorbs anything it cannot place, {data.labelCheck.agreement === null
                 ? " and the 30-advisory hand-check that would measure its accuracy has not been completed, so no agreement rate is reported."
                 : ` a hand-check of ${count(
                     data.labelCheck.checked,

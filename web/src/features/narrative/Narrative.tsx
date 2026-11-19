@@ -63,7 +63,7 @@ export function Narrative() {
 
       <Section
         id="volume"
-        kicker="One — the pile"
+        kicker="One: the pile"
         heading="In 2026, an advisory lands against these libraries every other day"
       >
         <Prose>
@@ -80,8 +80,7 @@ export function Narrative() {
             Across the sixteen libraries in this study, published security
             advisories went from {count(q1.growth.from_count ?? 0)} in the first
             quarter of {q1.growth.from_quarter?.slice(0, 4)} to{" "}
-            {count(q1.growth.to_count ?? 0)} in {q1.growth.to_quarter?.slice(0, 4)}{" "}
-            — a {q1.growth.multiple}-fold rise. Some of that is real growth in
+            {count(q1.growth.to_count ?? 0)} in {q1.growth.to_quarter?.slice(0, 4)}{" "}, a {q1.growth.multiple}-fold rise. Some of that is real growth in
             the software itself: several of these projects barely existed in
             2022. Some of it is that more people are now looking, with better
             tools.
@@ -106,14 +105,14 @@ export function Narrative() {
 
       <Section
         id="classes"
-        kicker="Two — the flaws"
+        kicker="Two: the flaws"
         heading="Mostly the same old bugs, in new places"
       >
         <Prose>
           <p>
             The weaknesses behind these advisories are, for the most part,
             unremarkable. Denial of service, path traversal, command injection
-            and broken authentication account for the bulk of them — the same
+            and broken authentication account for the bulk of them, the same
             catalogue that has troubled web software for twenty years. Only{" "}
             {count(q2.ai_specific.true)} of {count(q2.total_rows)} rows,{" "}
             {percent(q2.ai_specific.share)}, describe a flaw that exists
@@ -124,8 +123,8 @@ export function Narrative() {
             for.{" "}
             {unsafeLoading ? (
               <>
-                Unsafe model and file loading — a malicious checkpoint that runs
-                code when you open it — accounts for{" "}
+                Unsafe model and file loading, a malicious checkpoint that runs
+                code when you open it, accounts for{" "}
                 <strong>{percent(unsafeLoading.old_share)}</strong> of advisories
                 against model libraries, and{" "}
                 <strong>{percent(unsafeLoading.new_share, 1)}</strong> of those
@@ -156,7 +155,7 @@ export function Narrative() {
             advisories against the Model Context Protocol kit are AI-specific,
             for the simple reason that an agent tool connector has no purpose
             outside an AI system. It is also a single package, which is too
-            little to generalise from — a caveat the chart above makes visible
+            little to generalise from, a caveat the chart above makes visible
             rather than burying.
           </p>
         </Prose>
@@ -164,7 +163,7 @@ export function Narrative() {
 
       <Section
         id="gap"
-        kicker="Three — the quiet"
+        kicker="Three: the quiet"
         heading="The fix usually ships before the warning. Usually."
       >
         <Prose>
@@ -180,7 +179,7 @@ export function Narrative() {
         </Prose>
 
         <Beat figure={`${days(headline.medianGap)} days`}>
-          is the median head start — the fix on PyPI before the public advisory,
+          is the median head start, the fix on PyPI before the public advisory,
           across {count(counts.gapMeasurable)} advisories where both dates could
           be established.
         </Beat>
@@ -201,16 +200,15 @@ export function Narrative() {
             advisory system. Removing
             all {count(q3.coverage.outliers)} statistical outliers moves the
             median by less than a day, from {days(headline.medianGap)} to{" "}
-            {days(q3.summary_excluding_outliers.median ?? 0)} — which is the
+            {days(q3.summary_excluding_outliers.median ?? 0)}, which is the
             check worth running before trusting any of this.
           </p>
           <p>
             The tail on the left is the part that matters.{" "}
             <strong>
-              {count(q3.summary.negative ?? 0)} advisories — about one in{" "}
+              {count(q3.summary.negative ?? 0)} advisories, about one in{" "}
               {spell(oneIn)} of those with a known fix
-            </strong>{" "}
-            — were published while no patched release existed. For those, the
+            </strong>{" "}, were published while no patched release existed. For those, the
             advisory was not a reassurance but a warning with nowhere to go.
           </p>
           <p>
@@ -231,7 +229,7 @@ export function Narrative() {
             What has <em>not</em> happened is improvement. Split by half-year,
             the median gap swings between under a day and nearly two months with
             no direction to it. On this evidence the ecosystem has not got
-            better at protecting users before telling them — it has simply got
+            better at protecting users before telling them. It has simply got
             busier.
           </p>
         </Prose>
@@ -243,7 +241,7 @@ export function Narrative() {
 
       <Section
         id="pace"
-        kicker="Four — the hypothesis that fails"
+        kicker="Four: the hypothesis that fails"
         heading="Do libraries that ship often patch faster? Probably not provable here."
       >
         <Prose>
@@ -272,7 +270,7 @@ export function Narrative() {
         <Prose>
           <p>
             The counter-examples are instructive. <code>torch</code> releases
-            rarely — {torch?.releases_per_year} releases a year — and its
+            rarely, {torch?.releases_per_year} releases a year, and its
             median advisory arrives{" "}
             {days(Math.abs(torch?.median_gap ?? 0))} days <em>before</em> a fix
             exists; <code>langchain-core</code> releases{" "}
@@ -286,18 +284,18 @@ export function Narrative() {
 
       <Section
         id="unpatched"
-        kicker="Five — the residue"
+        kicker="Five: the residue"
         heading={`${count(counts.withoutFix)} of these advisories have no patch at all`}
       >
         <Prose>
           <p>
             Everything above concerns advisories that were eventually fixed. The
             rest were not. {count(counts.withoutFix)} of{" "}
-            {count(counts.rows)} advisory-package rows —{" "}
+            {count(counts.rows)} advisory-package rows ({" "}
             {percent(q5.overall.estimate, 1)}, with a 95% interval of{" "}
-            {percent(q5.overall.low, 1)} to {percent(q5.overall.high, 1)} —
-            record no fixed release at all. For those, there is no gap to
-            measure, because there is no other side to it.
+            {percent(q5.overall.low, 1)} to {percent(q5.overall.high, 1)}) record
+            no fixed release at all. For those, there is no gap to measure,
+            because there is no other side to it.
           </p>
         </Prose>
 

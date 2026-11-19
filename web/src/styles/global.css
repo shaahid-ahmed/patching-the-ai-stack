@@ -1,4 +1,4 @@
-/* Element defaults only. No component styles belong in this file — if a rule
+/* Element defaults only. No component styles belong in this file, if a rule
  * needs a class name that is not an element or a document-wide concern, it
  * belongs in that component's own CSS module. */
 

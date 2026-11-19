@@ -25,7 +25,7 @@ interface Props {
 /**
  * Wraps every figure so that the furniture is identical across the piece: an
  * assertion as the title, units in the subtitle, one caveat line underneath,
- * and the underlying numbers available as a real table — both for screen
+ * and the underlying numbers available as a real table, both for screen
  * readers and for a sceptical reader who wants to check the drawing.
  */
 export function ChartFrame({
@@ -90,7 +90,7 @@ export function ChartFrame({
                     key={column.key}
                     className={column.numeric ? styles.num : undefined}
                   >
-                    {row[column.key] ?? "—"}
+                    {row[column.key] ?? ", "}
                   </td>
                 ))}
               </tr>

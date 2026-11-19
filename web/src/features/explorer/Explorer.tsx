@@ -1,6 +1,6 @@
 /** The explorer: 454 advisories, filterable, sortable, groupable, linkable.
  *
- * The whole pipeline is a `useMemo` over an array of 454 — microseconds — so
+ * The whole pipeline is a `useMemo` over an array of 454, microseconds, so
  * there is no virtualization, no index and no state library here. The URL is
  * the state; this component only reads it and renders.
  */
@@ -108,7 +108,7 @@ export function Explorer() {
         <p className={styles.standfirst}>
           {count(index.summary.rows)} advisory-package rows across{" "}
           {index.facets.packages.length} libraries. Filter it, sort it, open a
-          row for the full record — the address bar keeps your view, so you can
+          row for the full record. The address bar keeps your view, so you can
           send it to someone.
         </p>
       </header>

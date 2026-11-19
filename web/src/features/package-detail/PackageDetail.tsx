@@ -78,7 +78,7 @@ export function PackageDetail() {
             <span className={styles.fact}>
               Median gap{" "}
               <strong>
-                {data.gap.median === null ? "—" : `${days(data.gap.median)} days`}
+                {data.gap.median === null ? ", " : `${days(data.gap.median)} days`}
               </strong>
             </span>
             {cadence !== null ? (

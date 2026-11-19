@@ -29,8 +29,7 @@ export function EmptyState({ rows, filters, onClearFacet, onReset }: Props) {
       {culprit && label ? (
         <>
           <p className={styles.body}>
-            The <strong>{label}</strong> filter is doing most of the narrowing —
-            lifting it brings back {count(culprit.removed)}{" "}
+            The <strong>{label}</strong> filter is doing most of the narrowing, lifting it brings back {count(culprit.removed)}{" "}
             {culprit.removed === 1 ? "advisory" : "advisories"}.
           </p>
           <button
@@ -43,7 +42,7 @@ export function EmptyState({ rows, filters, onClearFacet, onReset }: Props) {
         </>
       ) : (
         <p className={styles.body}>
-          No single filter explains it — these constraints have no overlap in the
+          No single filter explains it, these constraints have no overlap in the
           data.
         </p>
       )}

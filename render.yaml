@@ -55,7 +55,11 @@ services:
       - path: /data/detail/*
         name: Cache-Control
         value: public, max-age=31536000, immutable
-      # The one unhashed file.
+      # The one unhashed file. Both spellings are needed: a visitor requests
+      # "/", not "/index.html", so a rule on the filename alone never matches.
+      - path: /
+        name: Cache-Control
+        value: no-cache
       - path: /index.html
         name: Cache-Control
         value: no-cache

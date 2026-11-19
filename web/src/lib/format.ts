@@ -18,7 +18,7 @@ export const days = (value: number) =>
   Number.isInteger(value) ? integer.format(value) : oneDecimal.format(value);
 
 export function percent(value: number | null, digits = 0): string {
-  if (value === null || Number.isNaN(value)) return "—";
+  if (value === null || Number.isNaN(value)) return ", ";
   return `${(value * 100).toFixed(digits)}%`;
 }
 
@@ -33,7 +33,7 @@ export function gapPhrase(gap: number | null): string {
 
 /** The short form for tables, where the column header carries the direction. */
 export function gapShort(gap: number | null): string {
-  if (gap === null) return "—";
+  if (gap === null) return ", ";
   const rounded = Math.round(gap);
   return rounded > 0 ? `+${days(rounded)}` : days(rounded);
 }
@@ -59,10 +59,10 @@ const monthFormatter = new Intl.DateTimeFormat("en-GB", {
 });
 
 export const date = (iso: string | null) =>
-  iso ? dateFormatter.format(new Date(iso)) : "—";
+  iso ? dateFormatter.format(new Date(iso)) : ", ";
 
 export const month = (iso: string | null) =>
-  iso ? monthFormatter.format(new Date(iso)) : "—";
+  iso ? monthFormatter.format(new Date(iso)) : ", ";
 
 export const severityRank: Record<Severity, number> = {
   low: 0,
@@ -73,7 +73,7 @@ export const severityRank: Record<Severity, number> = {
 
 /** EPSS is a probability in [0,1]; below 0.1% a percentage reads as zero. */
 export function exploitProbability(value: number | null): string {
-  if (value === null) return "—";
+  if (value === null) return ", ";
   if (value < 0.001) return "<0.1%";
   return `${(value * 100).toFixed(1)}%`;
 }

@@ -1,4 +1,4 @@
-/** Q3, second panel — has the gap moved?
+/** Q3, second panel, has the gap moved?
  *
  * Half-years rather than quarters, because several quarters hold too few
  * measurable gaps to support a median anyone should read. The n for each
@@ -83,9 +83,9 @@ export function GapOverTime({ data }: { data: FigureQ3 }) {
     rows: periods.map((p) => ({
       label: p.label,
       n: p.box.n,
-      median: p.box.median !== undefined ? days(p.box.median) : "—",
-      q1: p.box.q1 !== undefined ? days(p.box.q1) : "—",
-      q3: p.box.q3 !== undefined ? days(p.box.q3) : "—",
+      median: p.box.median !== undefined ? days(p.box.median) : ", ",
+      q1: p.box.q1 !== undefined ? days(p.box.q1) : ", ",
+      q3: p.box.q3 !== undefined ? days(p.box.q3) : ", ",
     })),
   };
 
@@ -94,7 +94,7 @@ export function GapOverTime({ data }: { data: FigureQ3 }) {
 
   return (
     <ChartFrame
-      title="The head start is not getting longer — it swings"
+      title="The head start is not getting longer. It swings"
       subtitle="Median days between the fixed release and disclosure, by half-year · shaded band is the interquartile range"
       note="Periods with fewer than five measurable gaps are omitted. The sample size behind each point is printed beneath it, because a median of a dozen advisories should not be read like a median of ninety."
       table={table}

@@ -12,7 +12,7 @@ interface Props {
 
 /**
  * One section of the argument. Revealed once on first intersection and never
- * replayed — a reader scrolling back up sees finished content, and nothing
+ * replayed, a reader scrolling back up sees finished content, and nothing
  * re-animates on a laptop driving a projector.
  */
 export function Section({ id, kicker, heading, children }: Props) {

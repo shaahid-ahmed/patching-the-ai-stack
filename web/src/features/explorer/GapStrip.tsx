@@ -1,7 +1,7 @@
 /** The current result set, drawn on the gap axis.
  *
  * This sits above the table so that filtering reads as a change of shape
- * rather than only a change of row count — a reader who ticks "Serving and web
+ * rather than only a change of row count, a reader who ticks "Serving and web
  * tools" should *see* the cloud slide toward zero, not have to compare two
  * numbers. The table is never the primary visual.
  */
@@ -108,7 +108,7 @@ export function GapStrip({ rows, selected, onSelect }: Props) {
                   onPointerLeave={() => setHovered(null)}
                   onClick={() => onSelect(selected === row.id ? null : row.id)}
                 >
-                  <title>{`${row.package} — ${gapPhrase(row.gap)}`}</title>
+                  <title>{`${row.package}, ${gapPhrase(row.gap)}`}</title>
                 </circle>
               );
             })}
@@ -170,7 +170,7 @@ export function GapStrip({ rows, selected, onSelect }: Props) {
       <p className={styles.readout} aria-live="polite">
         {activeRow ? (
           <>
-            <code>{activeRow.package}</code> — {gapPhrase(activeRow.gap)}
+            <code>{activeRow.package}</code>, {gapPhrase(activeRow.gap)}
             <span className={styles.readoutSummary}>{activeRow.summary}</span>
           </>
         ) : (

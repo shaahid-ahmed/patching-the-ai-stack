@@ -1,4 +1,4 @@
-/** Q3 — the gap between a fix shipping and the advisory going public.
+/** Q3: the gap between a fix shipping and the advisory going public.
  *
  * Three honesty devices, all of them load-bearing:
  *
@@ -104,9 +104,9 @@ export function GapDistribution({ data }: { data: FigureQ3 }) {
     rows: data.by_category.map((row) => ({
       label: row.label,
       n: row.box.n,
-      median: row.box.median !== undefined ? days(row.box.median) : "—",
-      q1: row.box.q1 !== undefined ? days(row.box.q1) : "—",
-      q3: row.box.q3 !== undefined ? days(row.box.q3) : "—",
+      median: row.box.median !== undefined ? days(row.box.median) : ", ",
+      q1: row.box.q1 !== undefined ? days(row.box.q1) : ", ",
+      q3: row.box.q3 !== undefined ? days(row.box.q3) : ", ",
       noFix: row.no_fix,
     })),
   };
@@ -117,7 +117,7 @@ export function GapDistribution({ data }: { data: FigureQ3 }) {
 
   return (
     <ChartFrame
-      title={`The fix usually ships before the warning — by a median of ${days(
+      title={`The fix usually ships before the warning, by a median of ${days(
         summary.median ?? 0,
       )} days`}
       subtitle={`One dot per advisory · days between the fixed release and public disclosure · n = ${count(
@@ -195,7 +195,7 @@ export function GapDistribution({ data }: { data: FigureQ3 }) {
                       onPointerEnter={() => setHovered(point.id)}
                       onPointerLeave={() => setHovered(null)}
                     >
-                      <title>{`${point.package} — ${gapPhrase(point.gap)}`}</title>
+                      <title>{`${point.package}, ${gapPhrase(point.gap)}`}</title>
                     </circle>
                   );
                 })}

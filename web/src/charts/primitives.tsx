@@ -1,7 +1,6 @@
 /** Shared chart furniture: margins, gridlines, ticks, hatching, annotations.
  *
- * Every figure uses these so the grammar is identical across the piece —
- * value-axis gridlines only, no rotated axis titles, units carried by the
+ * Every figure uses these so the grammar is identical across the piece, * value-axis gridlines only, no rotated axis titles, units carried by the
  * subtitle rather than the axis.
  */
 import type { ReactNode } from "react";

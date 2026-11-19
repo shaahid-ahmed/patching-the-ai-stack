@@ -1,11 +1,11 @@
-/** Q2 — which weakness classes dominate, and whether the mix differs between
+/** Q2, which weakness classes dominate, and whether the mix differs between
  *  older machine-learning libraries and newer large-language-model frameworks.
  *
  * Small multiples rather than a heatmap of raw counts: the four categories have
  * wildly unequal totals, so colour-by-count would encode category size instead
  * of the mix we are asking about. Each panel shows within-category share, with
  * the all-package share drawn behind as a grey reference bar, and every panel
- * keeps the same row order — that fixed order is what makes them comparable.
+ * keeps the same row order, that fixed order is what makes them comparable.
  *
  * The Agent tools category is a single library (mcp). Giving it share bars
  * would invite a reader to compare a one-package rate against a five-package
@@ -67,8 +67,8 @@ export function ClassMix({ data }: { data: FigureQ2 }) {
 
   const categories = useMemo(
     () =>
-      // Panel order follows the stack itself — model libraries, then the
-      // frameworks built on them, then serving, then agent tooling — not the
+      // Panel order follows the stack itself, model libraries, then the
+      // frameworks built on them, then serving, then agent tooling, not the
       // alphabetical key order. The category colours are a lightness ladder in
       // that same order, and the prose compares the first two side by side.
       (CATEGORY_PANEL_ORDER.filter(
@@ -296,7 +296,7 @@ export function ClassMix({ data }: { data: FigureQ2 }) {
                           }ms`,
                         }}
                       >
-                        <title>{`${label} — ${row.label}: ${count(
+                        <title>{`${label}, ${row.label}: ${count(
                           row.count,
                         )} of ${count(category.total)} (${percent(row.share, 1)})`}</title>
                       </rect>
@@ -346,7 +346,7 @@ export function ClassMix({ data }: { data: FigureQ2 }) {
 
   return (
     <ChartFrame
-      title="The weaknesses are mostly ordinary software bugs — unsafe model loading is the exception"
+      title="The weaknesses are mostly ordinary software bugs, unsafe model loading is the exception"
       subtitle={`Share of each category's advisories by weakness class · ${count(
         data.total_rows,
       )} advisory-package rows · ${count(data.ai_specific.true)} flagged AI-specific`}

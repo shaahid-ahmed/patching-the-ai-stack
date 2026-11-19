@@ -1,4 +1,4 @@
-/** Q5 — what share of advisories have no patched version at all.
+/** Q5, what share of advisories have no patched version at all.
  *
  * Sixteen stacked percentage bars would make a package with three advisories
  * look as solid as one with ninety. So every row carries its Wilson 95%
@@ -176,7 +176,7 @@ export function UnpatchedShare({ data }: { data: FigureQ5 }) {
     >
       <div ref={viewRef}>
         {/* The one genuinely alarming number, allowed to be the loudest thing
-            on the page — but set in the text column, not in a KPI tile. */}
+            on the page, but set in the text column, not in a KPI tile. */}
         <p
           style={{
             margin: "0 0 var(--rhythm)",
@@ -229,7 +229,7 @@ export function UnpatchedShare({ data }: { data: FigureQ5 }) {
                     className="chart-label"
                     fill={colors!.textSecondary}
                   >
-                    {`fewer than ${RANK_THRESHOLD} advisories — too few to rank`}
+                    {`fewer than ${RANK_THRESHOLD} advisories, too few to rank`}
                   </text>
                 </g>
 

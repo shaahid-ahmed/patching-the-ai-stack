@@ -1,7 +1,7 @@
 /** Releases and advisories on one shared time axis.
  *
  * This is the page's centrepiece: it is where a reader sees that a cluster of
- * advisories is followed by a burst of releases, or — more tellingly — that it
+ * advisories is followed by a burst of releases, or, more tellingly, that it
  * is not.
  *
  * `litellm` has over 900 releases, so drawing one tick per release would paint

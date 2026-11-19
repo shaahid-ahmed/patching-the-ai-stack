@@ -23,8 +23,8 @@ export function AdvisoryCard({ row }: { row: Advisory }) {
         <span className={styles.alarm}>no patched version</span>
       ),
     },
-    { label: "Fix released", value: row.fixDate ? date(row.fixDate) : "—" },
-    { label: "CVSS", value: row.cvss !== null ? row.cvss.toFixed(1) : "—" },
+    { label: "Fix released", value: row.fixDate ? date(row.fixDate) : ", " },
+    { label: "CVSS", value: row.cvss !== null ? row.cvss.toFixed(1) : ", " },
     {
       label: "Exploit probability (30 days)",
       value: exploitProbability(row.epss),

@@ -93,7 +93,7 @@
 
 /* A limitation a reader must not miss sits on a rule in the alarm hue; a
    lesser note sits on the ordinary rule. The distinction is structural, not
-   decorative — it tells a marker which caveats are load-bearing. */
+   decorative, it tells a marker which caveats are load-bearing. */
 .limitation {
   margin-block-start: calc(var(--rhythm) * 1.4);
   padding-inline-start: 1.25rem;

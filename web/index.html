@@ -4,12 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="color-scheme" content="dark" />
+
     <title>Patching the AI stack</title>
     <meta
       name="description"
-      content="How quickly open-source AI libraries fix security vulnerabilities: 419 advisories across 16 Python packages, 2022 to 2026."
+      content="419 security advisories across 16 open-source Python AI libraries, 2022 to 2026. The median fix shipped 18.4 days before disclosure, about one in eight shipped after."
     />
-    <meta name="color-scheme" content="light" />
+
+    <!-- Social cards. og:url and og:image must be absolute, so they carry the
+         Render hostname. If you rename the service in render.yaml, or add a
+         custom domain, change the three absolute URLs below to match or the
+         preview image will not load. -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Patching the AI stack" />
+    <meta property="og:title" content="The fix usually ships before the warning. Usually." />
+    <meta
+      property="og:description"
+      content="419 security advisories across 16 open-source Python AI libraries, 2022 to 2026. The median was patched 18.4 days before anyone was told, but 49 went public with no fix available, and 60 still have none."
+    />
+    <meta property="og:url" content="https://patching-the-ai-stack.onrender.com/" />
+    <meta property="og:image" content="https://patching-the-ai-stack.onrender.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Each of 386 advisories plotted by how many days its fix shipped before public disclosure. Forty-nine fall left of zero, meaning no fix existed when the advisory was published."
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The fix usually ships before the warning. Usually." />
+    <meta
+      name="twitter:description"
+      content="419 security advisories across 16 open-source Python AI libraries. Median 18.4 days of quiet before disclosure, 49 went public with no fix, 60 still have none."
+    />
+    <meta name="twitter:image" content="https://patching-the-ai-stack.onrender.com/og-image.png" />
+
+    <link rel="canonical" href="https://patching-the-ai-stack.onrender.com/" />
   </head>
   <body>
     <div id="root"></div>

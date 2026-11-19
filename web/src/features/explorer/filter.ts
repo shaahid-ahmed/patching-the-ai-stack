@@ -2,7 +2,7 @@
  *
  * 454 rows is small enough that this runs in well under a millisecond, which
  * is why the explorer needs no virtualization, no memoized index and no state
- * library — the URL changes, this reruns, the table redraws.
+ * library, the URL changes, this reruns, the table redraws.
  */
 import type { Advisory, CategoryId, Severity } from "@/data/types";
 import { severityRank } from "@/lib/format";
@@ -140,7 +140,7 @@ export function median(values: number[]): number | null {
 
 /**
  * Group headers carry the per-group median gap and n. That summary is the
- * reason to group at all — a flat sortable table is something a spreadsheet
+ * reason to group at all, a flat sortable table is something a spreadsheet
  * already does better.
  */
 export function groupRows(

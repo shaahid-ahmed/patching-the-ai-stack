@@ -1,4 +1,4 @@
-/** Q1 — advisories per quarter.
+/** Q1, advisories per quarter.
  *
  * The honest problem here is the final quarter: collection stopped partway
  * through it, so a solid short column would read as a collapse that did not

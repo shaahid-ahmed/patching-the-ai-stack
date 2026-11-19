@@ -24,7 +24,7 @@ export function Opening({ q3 }: { q3: FigureQ3 }) {
         {count(counts.advisories)} security advisories against{" "}
         {count(counts.packages)} of the Python libraries almost every AI
         application depends on. The median one was quietly patched{" "}
-        {days(headline.medianGap)} days before anyone was told — but about one
+        {days(headline.medianGap)} days before anyone was told, but about one
         in {spell(oneIn)} warned users about a flaw that had no fix yet, and{" "}
         {count(counts.withoutFix)} still have none.
       </p>

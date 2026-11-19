@@ -293,7 +293,7 @@ export function FilterPanel({
                 })
               }
             >
-              <option value="">{firstYear ?? "—"}</option>
+              <option value="">{firstYear ?? ", "}</option>
               {years.map((year) => (
                 <option key={year} value={year}>
                   {year}
@@ -312,7 +312,7 @@ export function FilterPanel({
                 })
               }
             >
-              <option value="">{lastYear ?? "—"}</option>
+              <option value="">{lastYear ?? ", "}</option>
               {years.map((year) => (
                 <option key={year} value={year}>
                   {year}

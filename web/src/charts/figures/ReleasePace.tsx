@@ -1,4 +1,4 @@
-/** Q4 — do libraries that release more often patch faster?
+/** Q4, do libraries that release more often patch faster?
  *
  * The honest answer is that it looks that way and sixteen packages cannot
  * prove it. So no fitted line is drawn. In its place the chart shows two
@@ -183,15 +183,15 @@ export function ReleasePace({ data }: { data: FigureQ4 }) {
     rows: data.packages.map((row) => ({
       package: row.package,
       releases: row.releases_per_year,
-      gap: row.median_gap === null ? "—" : days(row.median_gap),
+      gap: row.median_gap === null ? ", " : days(row.median_gap),
       advisories: row.advisories,
     })),
   };
 
   const rho = data.test.rho;
   const p = data.test.p_value;
-  const subtitle = `Spearman rho = ${rho === null ? "—" : rho.toFixed(2)}, p = ${
-    p === null ? "—" : p.toFixed(2)
+  const subtitle = `Spearman rho = ${rho === null ? ", " : rho.toFixed(2)}, p = ${
+    p === null ? ", " : p.toFixed(2)
   }, n = ${data.test.n} packages`;
 
   // "One time in N" stated from the p-value in the data rather than typed into
@@ -213,7 +213,7 @@ export function ReleasePace({ data }: { data: FigureQ4 }) {
 
   return (
     <ChartFrame
-      title="Libraries that ship often do seem to patch sooner — but sixteen packages cannot prove it"
+      title="Libraries that ship often do seem to patch sooner, but sixteen packages cannot prove it"
       subtitle={subtitle}
       note={`${data.note}${
         omitted > 0
@@ -323,7 +323,7 @@ export function ReleasePace({ data }: { data: FigureQ4 }) {
                           borderBottom: "1px solid var(--color-rule)",
                         }}
                       >
-                        {row.median_gap === null ? "—" : days(row.median_gap)}
+                        {row.median_gap === null ? ", " : days(row.median_gap)}
                       </td>
                     </tr>
                   ))}
@@ -462,7 +462,7 @@ export function ReleasePace({ data }: { data: FigureQ4 }) {
             >
               Each faint line is the same relationship refitted to a resample of
               the sixteen packages. They fan out because the slope is not
-              knowable at this sample size — a pattern this strong would appear
+              knowable at this sample size, a pattern this strong would appear
               about one time in {oddsInWords} by chance alone. Circle area is the number
               of advisories. No trend line is drawn here on purpose.
             </p>

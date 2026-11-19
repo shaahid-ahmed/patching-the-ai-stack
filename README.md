@@ -8,14 +8,13 @@ advisories across 16 Python packages, 2022–2026.
 
 ## The finding
 
-The median advisory was quietly patched **18.4 days** before it was published —
-users were protected before they were told to worry. But about **one in eight**
+The median advisory was quietly patched **18.4 days** before it was published, users were protected before they were told to worry. But about **one in eight**
 went public while no fixed release existed, and **60 of 454** advisory-package
 rows still have no patch at all.
 
 Advisories against these libraries rose seventeenfold between early 2023 and
-late 2026. Most describe ordinary weaknesses — denial of service, path
-traversal, command injection — in unusual places: the libraries that load model
+late 2026. Most describe ordinary weaknesses, denial of service, path
+traversal, command injection, in unusual places: the libraries that load model
 weights get attacked through the weights, and the ones that fetch URLs on a
 prompt's instruction get attacked through the instructions.
 
@@ -31,7 +30,7 @@ The headline measure is `days_fix_before_disclosure`: the fixed release date on
 PyPI minus the advisory's publication date. Positive means the fix shipped
 first. Negative means users were warned about a flaw they could not yet escape.
 
-The site's `/methods` page carries the limitations in full — chiefly that an
+The site's `/methods` page carries the limitations in full, chiefly that an
 advisory's publication date is not the date the flaw was found, that the
 AI-specific labels currently come from a keyword fallback rather than a model
 pass, and that 16 packages is a small sample.
@@ -78,7 +77,7 @@ npm run dev          # http://localhost:5173
 ## Deploying
 
 Render builds this as a **static site**. No Python runs in production, so
-`ANTHROPIC_API_KEY` never exists in the deployed environment — the enrichment
+`ANTHROPIC_API_KEY` never exists in the deployed environment, the enrichment
 ran once, locally, and its output is committed.
 
 A static site is also what avoids the free-tier spin-down: a free *web service*
@@ -97,7 +96,7 @@ its state when someone opens the link cold.
 `make verify` checks the result against the manifest and typechecks the site.
 
 Both need the Phase III analysis notebook and its CSV outputs, which are **not
-in this repository** — they live in the local project folder this site was
+in this repository**, they live in the local project folder this site was
 split out of. Without them the pipeline will stop and say so. The committed
 artifacts are complete and current, so this is only needed to refresh the data.
 
