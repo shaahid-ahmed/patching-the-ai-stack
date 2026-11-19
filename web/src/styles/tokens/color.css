@@ -1,0 +1,101 @@
+/* Colour tokens.
+ * Owner: UI director (the colour specialist did not deliver; this replaces it).
+ *
+ * Light only. There is no dark theme, deliberately: this is long-form reading
+ * that gets shown on a classroom projector, where dark backgrounds wash out to
+ * grey, and a half-verified second palette across five hand-drawn charts is
+ * worse than one palette that has been checked.
+ *
+ * The subject is security flaws, and the temptation is to paint the whole page
+ * red. That would be dishonest — most of these advisories were patched
+ * responsibly and quietly. Red is spent in exactly two places: an advisory
+ * published before any fix existed, and an advisory with no fix at all. Those
+ * are the failures, and they are the only things allowed to shout.
+ *
+ * Every pairing below was checked for WCAG contrast, and every data scale for
+ * deuteranopia, protanopia and tritanopia, before being written down.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces. Warm paper rather than clinical white: this is an article, and
+   * a pure #FFF page under serif body copy reads as an admin panel. */
+  --color-page: #FAF8F4;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FFFFFF;
+  --color-surface-sunken: #F0EDE6;
+
+  /* Text. Three levels is enough; a fourth invites illegible captions. */
+  --color-text: #1A1917;            /* 16.6:1 on page */
+  --color-text-secondary: #56524A;  /* 7.3:1  */
+  --color-text-muted: #6E695F;      /* 5.1:1 — still AA at 14px caption size */
+  --color-text-inverse: #FAF8F4;
+
+  --color-border: #E4E0D7;
+  --color-border-strong: #86816F;   /* 3.7:1 on page: meets non-text contrast */
+  --color-rule: #E8E5DC;
+
+  /* Interactive. The accent is deliberately outside every data scale, so a
+   * link can never be mistaken for a mark and vice versa. */
+  --color-accent: #1A4480;
+  --color-accent-hover: #0F2E5C;
+  --color-accent-contrast: #FFFFFF;
+  --color-focus: #2B5FD9;
+  --color-selected: #E6EDF7;
+  --color-hover: #F2EFE8;
+
+  /* Scale 1 — severity. Ordered, so it is one hue darkening, not four hues.
+   * Relative luminance falls 0.73 / 0.43 / 0.17 / 0.08, which is what makes
+   * the order survive a greyscale print and any colour-vision deficiency.
+   * Labels: ink on low and medium, inverse on high and critical. */
+  --color-severity-low: #EFDCB0;
+  --color-severity-medium: #DCA82F;
+  --color-severity-high: #926A11;
+  --color-severity-critical: #6E4A0F;
+
+  /* Scale 2 — package category. A lightness ladder in one cool hue, L* 20 /
+   * 39 / 59 / 78. Four distinct hues cannot clear all three deficiency types
+   * at once; a ladder can, and it is honest here because these categories are
+   * ordered — each step is one remove further from the model itself. Minimum
+   * separation 18 ΔLab under the worst deficiency. The lightest step never
+   * carries meaning alone against white: stacked bands get hairline
+   * separators, and every band is directly labelled. */
+  --color-category-model-libraries: #16324F;
+  --color-category-application-frameworks: #2F6185;
+  --color-category-serving-and-web-tools: #6494AD;
+  --color-category-agent-tools: #A8C4D1;
+
+  /* Scale 3 — the fix-to-disclosure gap. Diverging, anchored at zero, because
+   * the sign is the finding: teal means the fix shipped before anyone was
+   * told, red means users were warned about a flaw they could not yet escape.
+   * The neutral is a warm grey, not white, so same-day cases read as a value
+   * rather than as missing data. */
+  --color-gap-before: #0E7C70;
+  --color-gap-same: #A8A298;
+  --color-gap-after: #C1442E;
+  --color-gap-before-soft: #DCEEEA;
+  --color-gap-after-soft: #F9E3DD;
+
+  /* Scale 4 — AI-specific. Carried by hatching rather than hue, so it can be
+   * laid over a chart that is already using colour for something else. These
+   * are the hatch stroke and the ground it sits on. */
+  --color-ai-specific: #3F3A33;
+  --color-ai-general: #A8A298;
+
+  /* Scale 5 — unpatched. The one genuinely alarming number on the site, and
+   * the only place a deep red is spent on a large area. Deeper than
+   * --color-gap-after on purpose: no fix at all is worse than a late fix. */
+  --color-unpatched: #9B1C14;
+  --color-unpatched-soft: #F6DED9;
+
+  /* Chart furniture. Grid is barely there by design; the data should be the
+   * darkest thing in the plot area. */
+  --color-grid: #E8E5DC;
+  --color-axis: #8C877C;
+  --color-baseline: #86816F;
+  --color-reference: #56524A;
+  --color-mark-neutral: #6E6A61;
+  --color-mark-dim: #D6D2C8;
+  --color-annotation: #3F3A33;
+}

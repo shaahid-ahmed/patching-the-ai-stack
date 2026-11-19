@@ -1,0 +1,157 @@
+.piece {
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+.column {
+  max-inline-size: var(--measure);
+  margin-inline: auto;
+}
+
+/* Charts break out of the reading column; their captions return to it. */
+.wide {
+  max-inline-size: min(72rem, 100%);
+  margin-inline: auto;
+}
+
+.hero {
+  max-inline-size: min(72rem, 100%);
+  margin-inline: auto;
+  padding-block: clamp(3rem, 9vh, 6rem) clamp(2rem, 5vh, 3.5rem);
+}
+
+.eyebrow {
+  font-family: var(--ff-ui);
+  font-size: var(--t-h4);
+  letter-spacing: var(--ls-h4);
+  text-transform: uppercase;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-muted);
+  margin: 0 0 1.25rem;
+}
+
+.headline {
+  font-family: var(--ff-display);
+  font-size: var(--t-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  font-weight: var(--fw-medium);
+  margin: 0;
+  max-inline-size: 18ch;
+  text-wrap: balance;
+}
+
+.standfirst {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: var(--t-body-lg);
+  line-height: var(--lh-body-lg);
+  letter-spacing: var(--ls-body-lg);
+  color: var(--color-text-secondary);
+  max-inline-size: var(--measure-narrow);
+  margin-block: var(--rhythm) 0;
+}
+
+.byline {
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  color: var(--color-text-muted);
+  margin-block-start: calc(var(--rhythm) * 1.2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+}
+
+.section {
+  padding-block: clamp(2.5rem, 7vh, 5rem);
+  border-block-start: 1px solid var(--color-rule);
+}
+
+.section:first-of-type { border-block-start: 0; }
+
+.kicker {
+  font-family: var(--ff-ui);
+  font-size: var(--t-h4);
+  letter-spacing: var(--ls-h4);
+  text-transform: uppercase;
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent);
+  margin: 0 0 0.75rem;
+}
+
+.heading {
+  font-family: var(--ff-display);
+  font-size: var(--t-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--ls-h1);
+  font-weight: var(--fw-medium);
+  margin: 0 0 var(--rhythm);
+  text-wrap: balance;
+}
+
+.prose p {
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  margin-block: 0 var(--rhythm);
+  color: var(--color-text);
+}
+
+.prose p:last-child { margin-block-end: 0; }
+
+.prose strong { font-weight: var(--fw-semibold); }
+
+/* A statistic as a paragraph-level beat, inside the text column.
+   Deliberately not a bordered KPI tile. */
+.beat {
+  margin-block: calc(var(--rhythm) * 1.5);
+  max-inline-size: var(--measure);
+}
+
+.beatFigure {
+  font-family: var(--ff-display);
+  font-size: var(--t-number-hero);
+  line-height: var(--lh-number-hero);
+  letter-spacing: var(--ls-number-hero);
+  font-weight: var(--fw-medium);
+  font-variant-numeric: lining-nums;
+  color: var(--color-text);
+  display: block;
+}
+
+.beatBody {
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+  margin-block-start: 0.5rem;
+  max-inline-size: 44ch;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.reveal[data-revealed="true"] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--dur-4) var(--ease-out),
+    transform var(--dur-4) var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
+
+.ending {
+  padding-block: clamp(3rem, 8vh, 5rem);
+  border-block-start: 1px solid var(--color-rule);
+}
+
+.endingLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-block-start: var(--rhythm);
+  font-family: var(--ff-ui);
+  font-size: var(--t-body-sm);
+}

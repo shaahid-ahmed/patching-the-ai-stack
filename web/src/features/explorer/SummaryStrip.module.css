@@ -1,0 +1,22 @@
+.strip {
+  font-family: var(--ff-ui);
+  font-size: var(--t-body-sm);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.strip strong {
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+}
+
+.count { font-size: 1.05em; }
+
+.of { color: var(--color-text-muted); }
+
+.sep {
+  margin-inline: 0.6em;
+  color: var(--color-border-strong);
+}

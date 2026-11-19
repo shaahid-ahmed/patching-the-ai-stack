@@ -1,0 +1,137 @@
+.frame {
+  margin-block: calc(var(--rhythm) * 1.6);
+  max-inline-size: none;
+}
+
+.head {
+  max-inline-size: var(--measure);
+  margin-block-end: calc(var(--rhythm) * 0.6);
+}
+
+/* The chart title is the assertion the chart supports, not a variable name. */
+.title {
+  font-family: var(--ff-display);
+  font-size: var(--t-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.subtitle {
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  line-height: var(--lh-caption);
+  color: var(--color-text-secondary);
+  margin-block-start: 0.4em;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.plot {
+  position: relative;
+  inline-size: 100%;
+}
+
+.plot svg {
+  display: block;
+  inline-size: 100%;
+  overflow: visible;
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: baseline;
+  justify-content: space-between;
+  max-inline-size: var(--measure);
+  margin-block-start: calc(var(--rhythm) * 0.5);
+  padding-block-start: 0.6rem;
+  border-block-start: 1px solid var(--color-rule);
+}
+
+.note {
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  line-height: var(--lh-caption);
+  color: var(--color-text-muted);
+  margin: 0;
+  flex: 1 1 22ch;
+}
+
+.toggle {
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  color: var(--color-text-secondary);
+  background: none;
+  border: 0;
+  border-block-end: 1px solid var(--color-border-strong);
+  padding: 0 0 1px;
+  cursor: pointer;
+  transition: color var(--dur-1) var(--ease-micro);
+}
+
+.toggle:hover { color: var(--color-text); }
+
+.toggle:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.pill {
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  color: var(--color-text-secondary);
+  background: var(--color-surface-sunken);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.15em 0.7em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.pill:hover { border-color: var(--color-border-strong); color: var(--color-text); }
+
+.table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  font-family: var(--ff-ui);
+  font-size: var(--t-data-table);
+  font-variant-numeric: tabular-nums lining-nums;
+  margin-block-start: var(--rhythm);
+}
+
+.table caption {
+  text-align: start;
+  font-size: var(--t-caption);
+  color: var(--color-text-muted);
+  margin-block-end: 0.5rem;
+}
+
+.table th,
+.table td {
+  text-align: start;
+  padding: 0.35rem 0.75rem 0.35rem 0;
+  border-block-end: 1px solid var(--color-rule);
+}
+
+.table th { font-weight: var(--fw-semibold); color: var(--color-text-secondary); }
+.table td.num,
+.table th.num { text-align: end; }
+
+/* Visually hidden but reachable by a screen reader. Every chart carries its
+ * numbers this way, so the figure is not the only route to the data. */
+.sr {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

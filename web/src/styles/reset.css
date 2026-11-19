@@ -1,0 +1,60 @@
+/* A small, opinionated reset. Nothing here expresses a design decision; the
+ * decisions live in global.css and the token files. */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  min-block-size: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+svg,
+video { display: block; max-inline-size: 100%; }
+
+input,
+button,
+textarea,
+select { font: inherit; color: inherit; }
+
+button { background: none; border: 0; }
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 { overflow-wrap: break-word; }
+
+ul[role="list"],
+ol[role="list"] { list-style: none; padding: 0; }
+
+table { border-collapse: collapse; }
+
+:target { scroll-margin-block-start: 6rem; }
+
+/* Honour the reader's setting for anything not already handled by the motion
+ * tokens, including smooth scrolling, which is a vestibular trigger. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}

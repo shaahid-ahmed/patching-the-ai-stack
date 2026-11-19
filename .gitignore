@@ -1,0 +1,41 @@
+# ---------------------------------------------------------------------------
+# Coursework stays local. This repository is the deployable site plus the
+# pipeline that produced its data — not the submission.
+# ---------------------------------------------------------------------------
+/COURSE.md
+/phase1_proposal.md
+/Phase1_Data_Selection_and_API_Proposal.docx
+/phase2/
+/phase3/
+/final/
+/presentation/
+/viva/
+
+# Dependencies and build output
+node_modules/
+web/dist/
+web/.trash/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Secrets. The Claude enrichment key lives here and must never be committed.
+# Production needs no key at all: Render serves a static site and runs no Python.
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+.ipynb_checkpoints/
+
+# NOTE: web/public/data/*.json and web/src/data/manifest.json ARE committed on
+# purpose. Render runs no Python, so an uncommitted data artifact simply does
+# not exist in production.

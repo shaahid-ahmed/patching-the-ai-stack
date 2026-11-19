@@ -1,0 +1,118 @@
+.shell {
+  min-block-size: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-page);
+  color: var(--color-text);
+}
+
+.header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem clamp(1rem, 4vw, 3rem);
+  background: color-mix(in srgb, var(--color-page) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-block-end: 1px solid var(--color-rule);
+}
+
+.wordmark {
+  font-family: var(--ff-display);
+  font-size: 1.0625rem;
+  font-weight: var(--fw-semibold);
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  gap: 1.25rem;
+  margin-inline-start: auto;
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+}
+
+.link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  padding-block: 0.25rem;
+  border-block-end: 2px solid transparent;
+  transition: color var(--dur-1) var(--ease-micro);
+  white-space: nowrap;
+}
+
+.link:hover { color: var(--color-text); }
+
+.link[aria-current="page"] {
+  color: var(--color-text);
+  border-block-end-color: var(--color-accent);
+}
+
+.main { flex: 1; }
+
+.footer {
+  margin-block-start: calc(var(--rhythm) * 3);
+  padding: calc(var(--rhythm) * 1.5) clamp(1rem, 4vw, 3rem);
+  border-block-start: 1px solid var(--color-rule);
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  color: var(--color-text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+}
+
+.footer a { color: inherit; }
+
+.skip {
+  position: absolute;
+  inset-inline-start: -9999px;
+}
+
+.skip:focus {
+  inset-inline-start: 1rem;
+  inset-block-start: 1rem;
+  z-index: 50;
+  padding: 0.5rem 1rem;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-accent);
+  border-radius: 4px;
+  color: var(--color-text);
+}
+
+/* At phone widths the wordmark and three links do not fit on one line.
+ * The wordmark shortens and the nav keeps its own scroll rather than
+ * truncating "Methods" off the edge. */
+@media (max-width: 34rem) {
+  .header {
+    gap: 0.5rem;
+    padding-inline: 0.875rem;
+  }
+
+  .wordmark {
+    font-size: 0.9375rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-inline-size: 0;
+  }
+
+  .nav {
+    gap: 0.8rem;
+    flex: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav::-webkit-scrollbar { display: none; }
+}
+
+@media (max-width: 24rem) {
+  .wordmark { font-size: 0.875rem; }
+  .nav { gap: 0.65rem; font-size: 0.8125rem; }
+}

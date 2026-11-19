@@ -1,0 +1,21 @@
+.wrap {
+  max-inline-size: var(--measure-narrow);
+  margin: calc(var(--rhythm) * 4) auto;
+  padding-inline: 1.5rem;
+}
+
+.heading {
+  font-family: var(--ff-display);
+  font-size: var(--t-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--ls-h1);
+  font-weight: var(--fw-medium);
+  margin: 0 0 var(--rhythm);
+}
+
+.body {
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+  margin-block-end: var(--rhythm);
+}

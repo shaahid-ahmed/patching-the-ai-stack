@@ -1,0 +1,169 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--rhythm) * 0.75);
+  font-family: var(--ff-ui);
+}
+
+.group {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-inline-size: 0;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  margin-block-end: 0.5rem;
+  font-size: var(--t-h4);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-h4);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0;
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  border-radius: 999px;
+  min-inline-size: 1.25em;
+  padding: 0.05em 0.4em;
+  text-align: center;
+}
+
+.search {
+  inline-size: 100%;
+  font: inherit;
+  font-size: var(--t-caption);
+  padding: 0.45em 0.6em;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.search:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+  border-color: var(--color-accent);
+}
+
+.options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  max-block-size: 15rem;
+  overflow-y: auto;
+}
+
+.option {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.25rem 0.35rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: var(--t-caption);
+  color: var(--color-text-secondary);
+  transition: background var(--dur-1) var(--ease-micro);
+}
+
+.option:hover { background: var(--color-hover); color: var(--color-text); }
+
+.option:has(:checked) {
+  background: var(--color-selected);
+  color: var(--color-text);
+}
+
+.option:has(:focus-visible) {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+}
+
+/* A value that would return nothing is dimmed rather than hidden, so the
+   reader can see the whole vocabulary of the dataset. */
+.option[data-empty="true"] { opacity: 0.4; }
+
+.checkbox {
+  flex: none;
+  accent-color: var(--color-accent);
+  margin: 0;
+  translate: 0 1px;
+}
+
+.optionLabel {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.optionCount {
+  flex: none;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--color-text-muted);
+  font-size: 0.9em;
+}
+
+.noMatch {
+  font-size: var(--t-caption);
+  color: var(--color-text-muted);
+  padding: 0.25rem 0.35rem;
+}
+
+.range { display: flex; gap: 0.75rem; }
+
+.rangeField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: var(--t-caption);
+  color: var(--color-text-muted);
+  flex: 1;
+}
+
+.rangeField select {
+  font: inherit;
+  font-size: var(--t-caption);
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.35em 0.4em;
+}
+
+.reset {
+  align-self: flex-start;
+  font: inherit;
+  font-size: var(--t-caption);
+  color: var(--color-text-secondary);
+  background: none;
+  border: 0;
+  border-block-end: 1px solid var(--color-border-strong);
+  padding: 0 0 1px;
+  cursor: pointer;
+}
+
+.reset:hover { color: var(--color-text); }
+
+.reset:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.srOnly {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

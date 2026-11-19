@@ -1,0 +1,45 @@
+/* Motion tokens.
+ * Owner: motion specialist.
+ *
+ * Geometry easing is symmetric on purpose: a bar moving to a new value should
+ * read as a measured move, not a flourish. No springs anywhere, because a mark
+ * that overshoots its value displays a false number for the length of the
+ * overshoot.
+ */
+
+:root {
+  --dur-1: 90ms;   /* micro-feedback: mark hover, chip press, focus ring */
+  --dur-2: 160ms;  /* small state swaps: tooltip, exit fades, cross-fades */
+  --dur-3: 260ms;  /* data tweens: mark geometry, axis reflow, row expand */
+  --dur-4: 420ms;  /* entrances: section reveal, chart first draw */
+  --dur-5: 700ms;  /* the opening statement, once */
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-data: cubic-bezier(0.37, 0, 0.63, 1);
+  --ease-micro: cubic-bezier(0.3, 0, 0.4, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-emphasis: cubic-bezier(0.34, 1.26, 0.64, 1); /* filter chip only */
+
+  --stagger-mark: 12ms;
+  --stagger-block: 60ms;
+  --delay-tip-in: 60ms;
+  --delay-tip-out: 80ms;
+  --budget-chart: 600ms;
+}
+
+/* Not a blanket disable. Identification signals (hover highlight, focus ring,
+ * tooltip) survive at zero duration, because removing them makes a state change
+ * imperceptible rather than calmer. Decoration goes.
+ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-3: 1ms;
+    --dur-4: 1ms;
+    --dur-5: 1ms;
+    --stagger-mark: 0ms;
+    --stagger-block: 0ms;
+    --delay-tip-in: 0ms;
+    --delay-tip-out: 0ms;
+    --ease-emphasis: var(--ease-out);
+  }
+}

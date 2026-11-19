@@ -1,0 +1,113 @@
+.page {
+  padding: calc(var(--rhythm) * 1.5) clamp(1rem, 4vw, 3rem) var(--rhythm);
+}
+
+.intro {
+  max-inline-size: var(--measure);
+  margin-block-end: calc(var(--rhythm) * 1.2);
+}
+
+.title {
+  font-family: var(--ff-display);
+  font-size: var(--t-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--ls-h1);
+  font-weight: var(--fw-medium);
+  margin: 0 0 0.5rem;
+}
+
+.standfirst {
+  font-family: var(--ff-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr);
+  gap: calc(var(--rhythm) * 1.5);
+  align-items: start;
+}
+
+.rail {
+  position: sticky;
+  inset-block-start: 4.5rem;
+  max-block-size: calc(100dvh - 6rem);
+  overflow-y: auto;
+  padding-inline-end: 0.5rem;
+}
+
+.results { min-inline-size: 0; }
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-block-end: 0.85rem;
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+}
+
+.control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-text-muted);
+}
+
+.control select {
+  font: inherit;
+  font-size: var(--t-caption);
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.3em 0.4em;
+}
+
+.control select:focus-visible,
+.copy:focus-visible,
+.filterButton:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.copy {
+  margin-inline-start: auto;
+  font: inherit;
+  font-size: var(--t-caption);
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-text-secondary);
+  padding: 0.3em 0.9em;
+  cursor: pointer;
+}
+
+.copy:hover { border-color: var(--color-border-strong); color: var(--color-text); }
+
+/* The rail is the filter surface on desktop; the button only exists below it. */
+.filterButton { display: none; }
+
+@media (max-width: 60rem) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .rail { display: none; }
+
+  .filterButton {
+    display: inline-block;
+    font: inherit;
+    font-size: var(--t-caption);
+    font-weight: var(--fw-semibold);
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-border-strong);
+    border-radius: 999px;
+    color: var(--color-text);
+    padding: 0.35em 1em;
+    cursor: pointer;
+  }
+
+  .copy { margin-inline-start: 0; }
+}

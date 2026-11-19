@@ -1,0 +1,28 @@
+.wrap {
+  margin-block-start: calc(var(--rhythm) * 1.6);
+  inline-size: 100%;
+}
+
+.wrap svg { display: block; inline-size: 100%; overflow: visible; }
+
+.caption {
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  color: var(--color-text-muted);
+  margin-block-start: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.5rem;
+}
+
+.key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.swatch {
+  inline-size: 0.6rem;
+  block-size: 0.6rem;
+  border-radius: 50%;
+}

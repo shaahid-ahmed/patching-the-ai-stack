@@ -1,0 +1,84 @@
+/* Typography tokens.
+ * Owner: typography specialist. Do not hand-edit values here; change them at
+ * source and re-vendor, so the scale stays internally consistent.
+ *
+ * Three families, three jobs:
+ *   Newsreader  display + body prose. A news serif with a real optical-size
+ *               axis, so one file gives a tight headline and a comfortable
+ *               reading face. Serif body copy is what makes this read as an
+ *               article rather than a dashboard.
+ *   Inter       UI, tables, chart labels. The family here with true tabular
+ *               figures; holds up at 12px axis ticks where a serif goes thin.
+ *   JetBrains   package names, CVE/GHSA/CWE ids, version strings. Dotted zero
+ *   Mono        and tailed l, so 0/O and 1/l/I cannot be confused in
+ *               `GHSA-x9r9-c232-4q39` or `5.0.0rc3`.
+ */
+
+:root {
+  --ff-display: "Newsreader Variable", "Newsreader", "Iowan Old Style", Georgia, serif;
+  --ff-body: var(--ff-display);
+  --ff-ui: "Inter Variable", "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --ff-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Scale: base 18px, 1.25 up, 1.125 down. */
+  --t-display: 4.3125rem;     /* 69px */
+  --t-h1: 2.75rem;            /* 44px */
+  --t-h2: 2.1875rem;          /* 35px */
+  --t-h3: 1.75rem;            /* 28px */
+  --t-h4: 0.875rem;           /* 14px, uppercase eyebrow */
+  --t-body-lg: 1.375rem;      /* 22px, standfirst */
+  --t-body: 1.125rem;         /* 18px */
+  --t-body-sm: 1rem;          /* 16px */
+  --t-caption: 0.875rem;      /* 14px */
+  --t-mono-block: 0.90625rem; /* 14.5px */
+  --t-data-table: 0.9375rem;  /* 15px */
+  --t-chart-label: 0.78125rem;/* 12.5px */
+  --t-number-hero: 5.375rem;  /* 86px */
+  --t-number-inline: 2.75rem; /* 44px */
+
+  --lh-display: 1.02;
+  --lh-h1: 1.1;
+  --lh-h2: 1.16;
+  --lh-h3: 1.25;
+  --lh-body-lg: 1.5;
+  --lh-body: 1.65;
+  --lh-body-sm: 1.55;
+  --lh-caption: 1.4;
+  --lh-number-hero: 0.92;
+
+  --ls-display: -0.022em;
+  --ls-h1: -0.018em;
+  --ls-h2: -0.014em;
+  --ls-h3: -0.008em;
+  --ls-h4: 0.09em;
+  --ls-body-lg: -0.004em;
+  --ls-chart-label: 0.02em;
+  --ls-number-hero: -0.03em;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+
+  /* 18px x 1.65 = 30px. Every vertical gap in prose is a multiple of this. */
+  --rhythm: 1.875rem;
+  --measure: 68ch;
+  --measure-narrow: 52ch;
+}
+
+@media (max-width: 48rem) {
+  :root {
+    --t-display: 2.5rem;       /* 40px */
+    --t-h1: 1.9375rem;         /* 31px */
+    --t-h2: 1.6875rem;         /* 27px */
+    --t-h3: 1.4375rem;         /* 23px */
+    --t-body-lg: 1.1875rem;    /* 19px */
+    --t-body: 1.0625rem;       /* 17px */
+    --t-caption: 0.8125rem;    /* 13px */
+    --t-data-table: 0.84375rem;/* 13.5px */
+    --t-chart-label: 0.71875rem;
+    --t-number-hero: 3.25rem;  /* 52px */
+    --t-number-inline: 2.125rem;
+    --lh-display: 1.08;
+    --lh-body: 1.6;
+  }
+}

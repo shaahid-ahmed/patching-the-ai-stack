@@ -1,0 +1,229 @@
+.page {
+  padding-inline: clamp(1rem, 4vw, 3rem);
+  padding-block-start: calc(var(--rhythm) * 1.5);
+}
+
+.inner { max-inline-size: 72rem; margin-inline: auto; }
+
+.eyebrow {
+  font-family: var(--ff-ui);
+  font-size: var(--t-h4);
+  letter-spacing: var(--ls-h4);
+  text-transform: uppercase;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-muted);
+  margin: 0 0 0.6rem;
+}
+
+.name {
+  font-family: var(--ff-mono);
+  font-size: var(--t-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: -0.02em;
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.blurb {
+  font-family: var(--ff-body);
+  font-size: var(--t-body-lg);
+  line-height: var(--lh-body-lg);
+  letter-spacing: var(--ls-body-lg);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  max-inline-size: var(--measure-narrow);
+  margin: var(--rhythm) 0 0;
+}
+
+/* Running text, not a row of bordered tiles: four boxed numbers is the
+   strongest dashboard signal there is. */
+.facts {
+  font-family: var(--ff-ui);
+  font-size: var(--t-body-sm);
+  color: var(--color-text-secondary);
+  margin-block-start: calc(var(--rhythm) * 0.75);
+  padding-block-start: 0.75rem;
+  border-block-start: 1px solid var(--color-rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.fact strong {
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+}
+
+.alarm strong { color: var(--color-unpatched); }
+
+.section { margin-block-start: calc(var(--rhythm) * 2.2); }
+
+.sectionHead {
+  font-family: var(--ff-display);
+  font-size: var(--t-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+  font-weight: var(--fw-medium);
+  margin: 0 0 calc(var(--rhythm) * 0.5);
+  max-inline-size: var(--measure);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--rhythm) calc(var(--rhythm) * 1.5);
+}
+
+.breakdown { font-family: var(--ff-ui); font-size: var(--t-data-table); }
+
+.breakdownTitle {
+  font-size: var(--t-h4);
+  letter-spacing: var(--ls-h4);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0 0 0.75rem;
+  font-weight: var(--fw-semibold);
+}
+
+.barRow {
+  display: grid;
+  grid-template-columns: minmax(7rem, auto) 1fr 2.5rem;
+  align-items: center;
+  gap: 0.75rem;
+  padding-block: 0.3rem;
+}
+
+.barLabel { color: var(--color-text-secondary); }
+
+.barTrack {
+  block-size: 0.5rem;
+  background: var(--color-surface-sunken);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barFill {
+  block-size: 100%;
+  border-radius: 999px;
+  transition: inline-size var(--dur-3) var(--ease-data);
+}
+
+.barValue {
+  text-align: end;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--color-text);
+}
+
+.list { list-style: none; margin: 0; padding: 0; border-block-start: 1px solid var(--color-rule); }
+
+.item { border-block-end: 1px solid var(--color-rule); }
+
+.itemButton {
+  inline-size: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  padding: 0.85rem 0.25rem;
+  background: none;
+  border: 0;
+  text-align: start;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: background var(--dur-1) var(--ease-micro);
+}
+
+.itemButton:hover { background: var(--color-hover); }
+
+.itemButton:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: -2px;
+}
+
+.sev {
+  inline-size: 0.6rem;
+  block-size: 0.6rem;
+  border-radius: 50%;
+  align-self: center;
+}
+
+.itemTitle {
+  font-family: var(--ff-body);
+  font-size: var(--t-body-sm);
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.itemMeta {
+  display: block;
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  color: var(--color-text-muted);
+  margin-block-start: 0.25rem;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.itemGap {
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  font-variant-numeric: tabular-nums lining-nums;
+  white-space: nowrap;
+  color: var(--color-text-secondary);
+}
+
+.gapBefore { color: var(--color-gap-before); }
+.gapAfter { color: var(--color-gap-after); }
+.gapNone { color: var(--color-unpatched); }
+
+.panel {
+  padding: 0 0.25rem calc(var(--rhythm) * 0.75);
+  max-inline-size: var(--measure);
+}
+
+.panel p {
+  font-family: var(--ff-body);
+  font-size: var(--t-body-sm);
+  line-height: var(--lh-body-sm);
+  color: var(--color-text-secondary);
+  margin: 0 0 0.75rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.meta code {
+  font-family: var(--ff-mono);
+  font-size: 0.88em;
+  white-space: nowrap;
+}
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block: calc(var(--rhythm) * 2) calc(var(--rhythm) * 1.5);
+  padding-block-start: var(--rhythm);
+  border-block-start: 1px solid var(--color-rule);
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+}
+
+.pager a { color: var(--color-text-secondary); text-decoration: none; }
+.pager a:hover { color: var(--color-text); }
+.pager code { font-family: var(--ff-mono); }
+
+@media (max-width: 34rem) {
+  .itemButton { grid-template-columns: auto 1fr; }
+  .itemGap { grid-column: 2; }
+}

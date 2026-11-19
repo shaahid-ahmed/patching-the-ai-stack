@@ -1,0 +1,188 @@
+/* Element defaults only. No component styles belong in this file — if a rule
+ * needs a class name that is not an element or a document-wide concern, it
+ * belongs in that component's own CSS module. */
+
+body {
+  background: var(--color-page);
+  color: var(--color-text);
+  font-family: var(--ff-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  font-weight: var(--fw-regular);
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* Headings bind to the text beneath them: the space above is always larger
+ * than the space below, so a heading reads as belonging to what follows. */
+h1, h2, h3, h4 {
+  font-family: var(--ff-display);
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--t-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--ls-h1);
+  margin-block: calc(var(--rhythm) * 2.4) calc(var(--rhythm) * 0.6);
+}
+
+h2 {
+  font-size: var(--t-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+  margin-block: calc(var(--rhythm) * 2.2) calc(var(--rhythm) * 0.5);
+}
+
+h3 {
+  font-size: var(--t-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  font-weight: var(--fw-semibold);
+  margin-block: calc(var(--rhythm) * 1.4) calc(var(--rhythm) * 0.35);
+}
+
+h4 {
+  font-family: var(--ff-ui);
+  font-size: var(--t-h4);
+  letter-spacing: var(--ls-h4);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-block: calc(var(--rhythm) * 1.2) calc(var(--rhythm) * 0.3);
+}
+
+p, li { max-inline-size: var(--measure); }
+p + p { margin-block-start: var(--rhythm); }
+
+ul, ol { padding-inline-start: 1.4em; }
+li + li { margin-block-start: calc(var(--rhythm) * 0.35); }
+
+/* Links are ink with a coloured underline rather than coloured text: coloured
+ * body text inside a chart-heavy page competes with the data. */
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color var(--dur-1) var(--ease-micro),
+              color var(--dur-1) var(--ease-micro);
+}
+
+a:hover { color: var(--color-accent-hover); text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection { background: var(--color-selected); color: var(--color-text); }
+
+hr { border: 0; border-block-start: 1px solid var(--color-rule); margin-block: var(--rhythm); }
+
+strong, b { font-weight: var(--fw-semibold); }
+
+small { font-size: var(--t-caption); color: var(--color-text-muted); }
+
+/* Inline identifiers: package names, versions, CVE and GHSA ids, CWE codes.
+ * font-size-adjust matches the mono x-height to the serif around it without
+ * the compounding error of a percentage, and nowrap keeps an id like
+ * GHSA-x9r9-c232-4q39 from breaking across a line into nonsense. */
+:where(p, li, td, th, dd, dt) code,
+.id {
+  font-family: var(--ff-mono);
+  font-weight: var(--fw-medium);
+  letter-spacing: -0.01em;
+  font-size-adjust: 0.46;
+  font-feature-settings: "zero" 1, "ss02" 1, "calt" 0;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
+  padding: 0.08em 0.3em;
+  border-radius: 3px;
+  background: var(--color-surface-sunken);
+}
+
+@supports not (font-size-adjust: 0.46) {
+  :where(p, li, td, th, dd, dt) code,
+  .id { font-size: 0.88em; }
+}
+
+pre {
+  font-family: var(--ff-mono);
+  font-size: var(--t-mono-block);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+pre code { background: none; padding: 0; white-space: pre; }
+
+/* Anything that aligns in a column, ticks, or animates uses the UI face with
+ * true tabular figures; the serif keeps proportional figures for prose. */
+table, .tabular {
+  font-family: var(--ff-ui);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "cv05" 1, "ss03" 1;
+}
+
+svg text {
+  font-family: var(--ff-ui);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* ---- chart text and keys -------------------------------------------------
+ * These are global rather than CSS Modules because they are applied to SVG
+ * elements rendered by chart primitives shared across every figure.
+ */
+.chart-label {
+  font-family: var(--ff-ui);
+  font-size: var(--t-chart-label);
+  letter-spacing: var(--ls-chart-label);
+  font-weight: var(--fw-medium);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.chart-annotation-body {
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  line-height: 1.35;
+  color: var(--color-annotation);
+}
+
+.chart-key {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  margin: 0 0 0.9rem;
+  padding: 0;
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  color: var(--color-text-secondary);
+}
+
+.chart-key li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.chart-key-swatch {
+  inline-size: 0.7rem;
+  block-size: 0.7rem;
+  border-radius: 2px;
+  flex: none;
+}
+
+.chart-key-swatch--hatched {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--color-accent) 0 2px,
+    transparent 2px 4px
+  );
+  border: 1px solid var(--color-accent);
+}

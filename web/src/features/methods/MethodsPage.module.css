@@ -1,0 +1,262 @@
+.page {
+  padding-inline: clamp(1rem, 4vw, 3rem);
+  padding-block-start: calc(var(--rhythm) * 1.5);
+}
+
+.inner { max-inline-size: 60rem; margin-inline: auto; }
+
+.eyebrow {
+  font-family: var(--ff-ui);
+  font-size: var(--t-h4);
+  letter-spacing: var(--ls-h4);
+  text-transform: uppercase;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-muted);
+  margin: 0 0 0.6rem;
+}
+
+.title {
+  font-family: var(--ff-display);
+  font-size: var(--t-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--ls-h1);
+  font-weight: var(--fw-medium);
+  margin: 0;
+  max-inline-size: var(--measure);
+  text-wrap: balance;
+}
+
+.standfirst {
+  font-family: var(--ff-body);
+  font-size: var(--t-body-lg);
+  line-height: var(--lh-body-lg);
+  letter-spacing: var(--ls-body-lg);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  max-inline-size: var(--measure-narrow);
+  margin: var(--rhythm) 0 0;
+}
+
+.prose {
+  font-family: var(--ff-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--color-text);
+  max-inline-size: var(--measure);
+}
+
+.prose p { margin: 0 0 var(--rhythm); }
+
+.section { margin-block-start: calc(var(--rhythm) * 2.2); }
+
+.sectionHead {
+  font-family: var(--ff-display);
+  font-size: var(--t-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+  font-weight: var(--fw-medium);
+  margin: 0 0 calc(var(--rhythm) * 0.6);
+  max-inline-size: var(--measure);
+}
+
+.sources { list-style: none; margin: 0; padding: 0; }
+
+.source {
+  padding-block: var(--rhythm);
+  border-block-start: 1px solid var(--color-rule);
+  max-inline-size: var(--measure);
+}
+
+.sourceName {
+  font-family: var(--ff-ui);
+  font-size: var(--t-body-sm);
+  font-weight: var(--fw-semibold);
+  margin: 0 0 0.35rem;
+}
+
+.sourceName a { color: var(--color-accent); }
+
+.sourceRole {
+  font-family: var(--ff-body);
+  font-size: var(--t-body-sm);
+  line-height: var(--lh-body-sm);
+  color: var(--color-text);
+  margin: 0 0 0.4rem;
+}
+
+.sourceAuth {
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* A limitation a reader must not miss sits on a rule in the alarm hue; a
+   lesser note sits on the ordinary rule. The distinction is structural, not
+   decorative — it tells a marker which caveats are load-bearing. */
+.limitation {
+  margin-block-start: calc(var(--rhythm) * 1.4);
+  padding-inline-start: 1.25rem;
+  border-inline-start: 3px solid var(--color-border);
+  scroll-margin-block-start: 5rem;
+}
+
+.important { border-inline-start-color: var(--color-unpatched); }
+
+.limitationHead {
+  font-family: var(--ff-display);
+  font-size: var(--t-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  font-weight: var(--fw-semibold);
+  margin: 0 0 0.5rem;
+  max-inline-size: var(--measure);
+  text-wrap: balance;
+}
+
+.limitationHead a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.limitationHead a:hover::after {
+  content: " #";
+  color: var(--color-text-muted);
+}
+
+.limitationBody {
+  font-family: var(--ff-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+  max-inline-size: var(--measure);
+  margin: 0;
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  letter-spacing: var(--ls-h4);
+  text-transform: uppercase;
+  font-weight: var(--fw-semibold);
+  color: var(--color-unpatched);
+  margin-block-end: 0.3rem;
+}
+
+.banner {
+  margin-block-start: calc(var(--rhythm) * 1.2);
+  padding: calc(var(--rhythm) * 0.75) calc(var(--rhythm) * 0.9);
+  background: var(--color-unpatched-soft);
+  border: 1px solid var(--color-unpatched);
+  border-radius: 4px;
+  max-inline-size: var(--measure);
+}
+
+.bannerHead {
+  font-family: var(--ff-ui);
+  font-size: var(--t-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+  margin: 0 0 0.5rem;
+}
+
+.bannerBody {
+  font-family: var(--ff-body);
+  font-size: var(--t-body-sm);
+  line-height: var(--lh-body-sm);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.bannerBody code {
+  font-family: var(--ff-mono);
+  font-size: 0.88em;
+  white-space: nowrap;
+}
+
+.table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  font-family: var(--ff-ui);
+  font-size: var(--t-data-table);
+  font-variant-numeric: tabular-nums lining-nums;
+  margin-block-start: var(--rhythm);
+}
+
+.table caption {
+  text-align: start;
+  font-size: var(--t-caption);
+  color: var(--color-text-muted);
+  margin-block-end: 0.5rem;
+}
+
+.table th,
+.table td {
+  text-align: start;
+  padding: 0.4rem 0.75rem 0.4rem 0;
+  border-block-end: 1px solid var(--color-rule);
+  vertical-align: top;
+}
+
+.table th {
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+}
+
+.table td.num,
+.table th.num { text-align: end; white-space: nowrap; }
+
+.table code { font-family: var(--ff-mono); font-size: 0.88em; white-space: nowrap; }
+
+.facts {
+  font-family: var(--ff-ui);
+  font-size: var(--t-body-sm);
+  color: var(--color-text-secondary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  font-variant-numeric: tabular-nums lining-nums;
+  padding-block: 0.9rem;
+  border-block: 1px solid var(--color-rule);
+  margin-block-start: var(--rhythm);
+}
+
+.facts strong { color: var(--color-text); font-weight: var(--fw-semibold); }
+
+.catList { list-style: none; margin: var(--rhythm) 0 0; padding: 0; }
+
+.cat {
+  padding-block: 0.8rem;
+  border-block-start: 1px solid var(--color-rule);
+  max-inline-size: var(--measure);
+}
+
+.catName {
+  font-family: var(--ff-ui);
+  font-size: var(--t-body-sm);
+  font-weight: var(--fw-semibold);
+  margin: 0 0 0.2rem;
+}
+
+.catBlurb {
+  font-family: var(--ff-body);
+  font-size: var(--t-body-sm);
+  color: var(--color-text-secondary);
+  margin: 0 0 0.35rem;
+}
+
+.catPackages {
+  font-family: var(--ff-mono);
+  font-size: var(--t-caption);
+  color: var(--color-text-muted);
+}
+
+.generated {
+  font-family: var(--ff-ui);
+  font-size: var(--t-caption);
+  color: var(--color-text-muted);
+  margin-block: calc(var(--rhythm) * 2) var(--rhythm);
+  padding-block-start: var(--rhythm);
+  border-block-start: 1px solid var(--color-rule);
+}
