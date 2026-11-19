@@ -106,12 +106,14 @@ td[data-direction="none"] { color: var(--color-unpatched); }
   max-inline-size: 42ch;
 }
 
+/* Single-line truncation with a real ellipsis. -webkit-line-clamp does not
+ * reliably produce one inside a table cell, so the summary was being sliced
+ * mid-phrase with no sign that more text existed. */
 .clamp {
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
-  -webkit-box-orient: vertical;
+  display: block;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .bandRow > td { padding: 0; }
@@ -201,6 +203,15 @@ td[data-direction="none"] { color: var(--color-unpatched); }
 .feedMeta {
   font-size: var(--t-caption);
   color: var(--color-text-muted);
+}
+
+/* The clamp has to live one level in from the flex container. A flex item has
+ * its display blockified, which turns -webkit-box into flow-root and silently
+ * disables the line clamp: the text was then hard-cut at two lines with no
+ * ellipsis on 64 of the 454 cards. */
+.feedSummaryWrap {
+  inline-size: 100%;
+  min-inline-size: 0;
 }
 
 .feedSummary {

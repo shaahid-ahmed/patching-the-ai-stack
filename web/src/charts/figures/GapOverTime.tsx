@@ -41,11 +41,16 @@ export function GapOverTime({ data }: { data: FigureQ3 }) {
     const lower = Math.min(0, Math.floor(Math.min(...lows) / 10) * 10);
     const scale = (value: number) =>
       plotHeight - ((value - lower) / (upper - lower)) * plotHeight;
-    const step = periods.length > 1 ? plotWidth / (periods.length - 1) : 0;
+    // Keep the end points off the plot boundaries: a centred label on a point
+    // at x=0 runs back under the y-axis ticks, and a marker on the right edge
+    // is clipped by it.
+    const inset = Math.min(46, plotWidth * 0.07);
+    const usable = Math.max(1, plotWidth - inset * 2);
+    const step = periods.length > 1 ? usable / (periods.length - 1) : 0;
 
     const pts = periods.map((period, index) => ({
       ...period,
-      x: periods.length > 1 ? index * step : plotWidth / 2,
+      x: periods.length > 1 ? inset + index * step : plotWidth / 2,
       y: scale(period.box.median ?? 0),
       yLow: scale(period.box.q1 ?? 0),
       yHigh: scale(period.box.q3 ?? 0),
@@ -91,6 +96,13 @@ export function GapOverTime({ data }: { data: FigureQ3 }) {
 
   const line =
     points.length > 0 ? `M ${points.map((p) => `${p.x} ${p.y}`).join(" L ")}` : "";
+
+  // Eight half-year labels cannot fit at phone widths without colliding, so
+  // narrow screens get one label per year. The markers all stay; only the
+  // labels thin out.
+  const labelled = narrow
+    ? points.filter((point) => point.period.endsWith("H1"))
+    : points;
 
   return (
     <ChartFrame
@@ -164,16 +176,16 @@ export function GapOverTime({ data }: { data: FigureQ3 }) {
                 <g transform={`translate(0,${plotHeight})`}>
                   <BottomAxis
                     color={colors!.axis}
-                    ticks={points.map((point) => ({
+                    ticks={labelled.map((point) => ({
                       value: point.period,
                       offset: point.x,
-                      label: narrow ? point.label.replace(" ", "") : point.label,
+                      label: narrow ? point.period.slice(0, 4) : point.label,
                     }))}
                   />
                   <BottomAxis
                     color={colors!.textSecondary}
                     gap={30}
-                    ticks={points.map((point) => ({
+                    ticks={labelled.map((point) => ({
                       value: `${point.period}-n`,
                       offset: point.x,
                       label: `n=${count(point.box.n)}`,

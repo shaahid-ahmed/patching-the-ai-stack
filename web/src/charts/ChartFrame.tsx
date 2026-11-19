@@ -67,6 +67,7 @@ export function ChartFrame({
       </figcaption>
 
       <div id={tableId} className={showTable ? undefined : styles.sr}>
+        <div className={styles.tableWrap}>
         <table className={styles.table}>
           <caption>{table.caption}</caption>
           <thead>
@@ -97,6 +98,7 @@ export function ChartFrame({
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </figure>
   );

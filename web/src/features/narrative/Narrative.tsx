@@ -194,7 +194,7 @@ export function Narrative() {
             one extreme an advisory went out{" "}
             {days(Math.abs(q3.summary.min ?? 0))} days before any fix existed;
             at the other, a fix had been sitting on PyPI for{" "}
-            {days(q3.summary.max ?? 0)} days before anyone was told. The
+            {days(Math.round(q3.summary.max ?? 0))} days before anyone was told. The
             standard deviation is {days(q3.summary.sd ?? 0)} days, dragged by a
             handful of back-filled records where a release long predates the
             advisory system. Removing
@@ -208,7 +208,7 @@ export function Narrative() {
             <strong>
               {count(q3.summary.negative ?? 0)} advisories, about one in{" "}
               {spell(oneIn)} of those with a known fix
-            </strong>{" "}, were published while no patched release existed. For those, the
+            </strong>, were published while no patched release existed. For those, the
             advisory was not a reassurance but a warning with nowhere to go.
           </p>
           <p>
@@ -250,8 +250,7 @@ export function Narrative() {
             get a security fix out faster than one releasing twice a year. The
             data leans that way and then refuses to commit: across the sixteen
             packages, release cadence and patch head start correlate at Spearman
-            ρ = {q4.test.rho?.toFixed(2)}, with p ={" "}
-            {q4.test.p_value?.toFixed(2)}.
+            {`ρ = ${q4.test.rho?.toFixed(2)}, with p = ${q4.test.p_value?.toFixed(2)}.`}
           </p>
           <p>
             At sixteen points, a pattern this strong would turn up by chance

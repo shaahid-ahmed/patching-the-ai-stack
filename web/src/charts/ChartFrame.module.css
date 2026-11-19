@@ -95,8 +95,16 @@
 
 .pill:hover { border-color: var(--color-border-strong); color: var(--color-text); }
 
+/* These tables carry up to six columns and cannot shrink to phone width.
+ * Without this they widen the document when the disclosure is opened. */
+.tableWrap {
+  overflow-x: auto;
+  max-inline-size: 100%;
+}
+
 .table {
   inline-size: 100%;
+  min-inline-size: 26rem;
   border-collapse: collapse;
   font-family: var(--ff-ui);
   font-size: var(--t-data-table);

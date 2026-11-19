@@ -175,8 +175,17 @@
   white-space: nowrap;
 }
 
+/* The outliers table has four columns and cannot shrink below about 480px.
+ * Without this wrapper it widens the whole document and the page scrolls
+ * sideways on a phone. */
+.tableWrap {
+  overflow-x: auto;
+  max-inline-size: 100%;
+}
+
 .table {
   inline-size: 100%;
+  min-inline-size: 30rem;
   border-collapse: collapse;
   font-family: var(--ff-ui);
   font-size: var(--t-data-table);

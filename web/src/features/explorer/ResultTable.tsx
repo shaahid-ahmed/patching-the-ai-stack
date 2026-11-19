@@ -119,7 +119,9 @@ export function ResultTable({
                 <span className={styles.feedMeta}>
                   {date(row.published)} · {attackClassLabel(row.attackClass)}
                 </span>
-                <span className={styles.feedSummary}>{row.summary}</span>
+                <span className={styles.feedSummaryWrap}>
+                  <span className={styles.feedSummary}>{row.summary}</span>
+                </span>
               </button>
               {open ? <AdvisoryCard row={row} /> : null}
             </li>

@@ -26,6 +26,7 @@ function LimitationSection({ limitation }: { limitation: Limitation }) {
       <p className={styles.limitationBody}>{limitation.detail}</p>
 
       {limitation.examples && limitation.examples.length > 0 ? (
+        <div className={styles.tableWrap}>
         <table className={styles.table}>
           <caption>
             All {count(limitation.examples.length)} flagged values, largest gap
@@ -58,6 +59,7 @@ function LimitationSection({ limitation }: { limitation: Limitation }) {
             ))}
           </tbody>
         </table>
+        </div>
       ) : null}
     </section>
   );
