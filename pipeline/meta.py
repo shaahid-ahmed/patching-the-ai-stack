@@ -44,6 +44,11 @@ def build(advisories: pd.DataFrame, releases: pd.DataFrame, label_sample) -> dic
         if advisories["label_source"].notna().any() else "unknown"
     )
     labels_preliminary = "keyword" in label_source.lower()
+    # The mode decides the headline, but a handful of rows can keep the
+    # keyword label when the provider declines the advisory text, and the
+    # limitation should say so rather than implying a clean sweep.
+    keyword_rows = int(advisories["label_source"].fillna("")
+                       .str.lower().str.contains("keyword").sum())
 
     gaps = advisories["days_fix_before_disclosure"]
     outliers = advisories[advisories["gap_outlier"]]
@@ -80,8 +85,15 @@ def build(advisories: pd.DataFrame, releases: pd.DataFrame, label_sample) -> dic
             ),
             "detail": (
                 f"Labels currently come from: {label_source}. A keyword fallback runs when no "
-                "ANTHROPIC_API_KEY is configured; it is cruder than the model pass, particularly "
-                "for the 'other' class, which absorbs anything it cannot place. "
+                "model provider is configured, and for any advisory the provider declines; it is "
+                "cruder than the model pass, particularly for the 'other' class, which absorbs "
+                "anything it cannot place. "
+                + (
+                    f"{keyword_rows} of {len(advisories)} rows still carry that fallback label "
+                    "and are marked preliminary where they appear. "
+                    if keyword_rows and not labels_preliminary
+                    else ""
+                )
                 + (
                     f"A hand-check of {checked} advisories agrees with the automatic label "
                     f"{agreement:.0%} of the time."

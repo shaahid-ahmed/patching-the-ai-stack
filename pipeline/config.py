@@ -7,6 +7,12 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from . import env
+
+# Read .env before anything asks for a key. A real environment variable still
+# wins, so `MODEL_API_KEY=... python3 -m pipeline.enrich` overrides the file.
+env.load_once()
+
 # --- paths -----------------------------------------------------------------
 PIPELINE_DIR = Path(__file__).resolve().parent
 PROJECT_DIR = PIPELINE_DIR.parent

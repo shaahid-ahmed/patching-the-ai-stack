@@ -90,6 +90,46 @@ its state when someone opens the link cold.
    headers. There is nothing to configure in the dashboard and no environment
    variables to add.
 
+## Re-running the enrichment
+
+Attack class and the AI-specific flag are assigned by a model, not by the
+advisory. The site currently ships the **keyword fallback**, which is crude and
+is labelled as preliminary on every chart that uses it.
+
+Put your key in `.env` at the repository root. It is gitignored, and the
+pipeline reads it automatically; nothing needs exporting.
+
+```bash
+make setup               # pandas, scipy, openai
+make doctor              # confirm this machine has them, and sees your key
+
+cp .env.example .env     # if you do not have one yet
+# then edit .env:
+#   MODEL_API_KEY=your-key-from-dev.meta.ai
+
+pip install openai                      # only for the Meta provider
+
+make enrich-estimate                    # what it will call, and roughly the cost
+make enrich                             # Meta Model API, muse-spark-1.3
+make artifacts && make verify           # fold the new labels into the site
+```
+
+Other providers: `make enrich PROVIDER=anthropic`, or `PROVIDER=keyword` for the
+offline pass. Override the model with `ARGS="--model muse-spark-1.2"`.
+
+A real environment variable always beats `.env`, so a one-off
+`MODEL_API_KEY=... make enrich` still works.
+
+Every reply is cached per advisory under `phase3/enrichment_cache/`, so an
+interrupted run resumes for free and a re-run spends nothing. One call is made
+per *advisory*, not per row, since an advisory affecting both `langchain` and
+`langchain-core` is one piece of text.
+
+`enrich.py` writes `label_source` into the CSV, and the site reads it: once the
+labels come from a model rather than the keyword pass, the "Preliminary label"
+pills disappear and the methods page updates itself. Nothing in the frontend
+needs changing.
+
 ## Regenerating the data
 
 `make artifacts` rebuilds `web/public/data/` from the analysis CSVs, and

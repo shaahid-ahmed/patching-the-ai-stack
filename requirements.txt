@@ -1,0 +1,16 @@
+# Python dependencies for the pipeline. The deployed site needs none of these:
+# Render serves a static build and runs no Python.
+#
+#   pip install -r requirements.txt
+#
+# Lower bounds rather than exact pins, so wheels resolve on whichever Python
+# you have. Known good: pandas 2.3.3, scipy 1.15.3, numpy 2.x, Python 3.10-3.13.
+
+pandas>=2.0
+scipy>=1.11
+
+# Only needed to re-run the enrichment (pipeline/enrich.py).
+#   --provider meta       Meta Model API / Muse, via the OpenAI-compatible SDK
+#   --provider anthropic  Anthropic Messages API
+openai>=1.40
+anthropic>=0.40

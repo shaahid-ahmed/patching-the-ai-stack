@@ -14,7 +14,15 @@ import type {
   FigureQ4,
   FigureQ5,
 } from "@/data/types";
-import { count, days, month, percent, spell } from "@/lib/format";
+import {
+  NO_VALUE,
+  count,
+  days,
+  month,
+  ordinal,
+  percent,
+  spell,
+} from "@/lib/format";
 
 import { Beat, Prose, Section, Wide } from "./Section";
 import { Opening } from "./Opening";
@@ -50,6 +58,24 @@ export function Narrative() {
   const servingTest = q3.tests.serving_vs_frameworks;
 
   const worstUnpatched = q5.by_package.filter((p) => p.total >= 10).slice(0, 3);
+
+  // The label mix is read in rank order rather than asserted, because the
+  // enrichment pass can reorder it. An earlier keyword pass put agent tooling
+  // top on the strength of words like "prompt" in the text; the model labels
+  // put it last. Prose that names a leader has to read it from the data.
+  const categoryLabel = (id: string) =>
+    q3.by_category.find((c) => c.category_id === id)?.label ?? id;
+  const aiByCategory = Object.entries(q2.ai_specific.by_category)
+    .map(([id, v]) => ({ id, label: categoryLabel(id), ...v }))
+    .sort((a, b) => (b.share ?? 0) - (a.share ?? 0));
+  const topAiCategory = aiByCategory.at(0);
+  const lowAiCategory = aiByCategory.length > 1 ? aiByCategory.at(-1) : undefined;
+
+  // The largest class that is almost entirely AI-specific, and where it sits
+  // among all classes by volume.
+  const aiMajorities = aiByCategory.filter((c) => (c.share ?? 0) > 0.5);
+  const aiHeavyRank = q2.classes.findIndex((c) => (c.ai_specific_share ?? 0) > 0.8);
+  const aiHeavy = aiHeavyRank === -1 ? undefined : q2.classes.at(aiHeavyRank);
 
   // Named in the prose below, so they are read from the data rather than typed
   // into the sentence, where they would drift on the next pipeline run.
@@ -118,13 +144,25 @@ export function Narrative() {
             {percent(q2.ai_specific.share)}, describe a flaw that exists
             specifically because the software runs models or agents.
           </p>
+          {aiHeavy ? (
+            <p>
+              One AI-specific class does break into that leading group. Unsafe
+              model and file loading, a malicious checkpoint that runs code the
+              moment you open it, is the {ordinal(aiHeavyRank + 1)} largest
+              class in the data: {percent(aiHeavy.share)} of all rows,{" "}
+              {percent(aiHeavy.ai_specific_share)} of it AI-specific, median
+              CVSS {aiHeavy.median_cvss ?? NO_VALUE}. It is the one place where
+              running models creates a new kind of bug rather than a new
+              address for an old one.
+            </p>
+          ) : null}
           <p>
             But the <em>mix</em> shifts sharply depending on what a library is
             for.{" "}
             {unsafeLoading ? (
               <>
-                Unsafe model and file loading, a malicious checkpoint that runs
-                code when you open it, accounts for{" "}
+                {aiHeavy ? "That same class" : "Unsafe model and file loading"}{" "}
+                accounts for{" "}
                 <strong>{percent(unsafeLoading.old_share)}</strong> of advisories
                 against model libraries, and{" "}
                 <strong>{percent(unsafeLoading.new_share, 1)}</strong> of those
@@ -149,15 +187,42 @@ export function Narrative() {
         </Wide>
 
         <Prose>
-          <p>
-            The one category where AI-specific risk is not a minority is agent
-            tooling. All {count(q2.ai_specific.by_category["agent-tools"].true)}{" "}
-            advisories against the Model Context Protocol kit are AI-specific,
-            for the simple reason that an agent tool connector has no purpose
-            outside an AI system. It is also a single package, which is too
-            little to generalise from, a caveat the chart above makes visible
-            rather than burying.
-          </p>
+          {topAiCategory ? (
+            <p>
+              AI-specific risk is spread unevenly. It runs highest in{" "}
+              {topAiCategory.label.toLowerCase()}, at{" "}
+              {percent(topAiCategory.share)} of their advisories,{" "}
+              {count(topAiCategory.true)} of {count(topAiCategory.total)}
+              {aiMajorities.length === 1
+                ? ", the only category where the AI-specific flaws outnumber the ordinary ones"
+                : ""}
+              .
+            </p>
+          ) : null}
+          {lowAiCategory ? (
+            <p>
+              The surprise is {lowAiCategory.label.toLowerCase()}, and it runs
+              the other way.
+              {lowAiCategory.id === "agent-tools" ? (
+                <>
+                  {" "}Judged on vocabulary, almost everything in it looks
+                  AI-specific, because words like prompt and tool are all over
+                  the text.
+                </>
+              ) : null}{" "}
+              Read properly, only {count(lowAiCategory.true)} of{" "}
+              {count(lowAiCategory.total)} are: {percent(lowAiCategory.share)},
+              the lowest share of the {spell(aiByCategory.length)} categories.
+              {lowAiCategory.id === "agent-tools" ? (
+                <>
+                  {" "}Most flaws in an agent connector turn out to be ordinary
+                  flaws that happen to live in an agent connector. It is also a
+                  single package, too little to generalise from, a caveat the
+                  chart above makes visible rather than burying.
+                </>
+              ) : null}
+            </p>
+          ) : null}
         </Prose>
       </Section>
 

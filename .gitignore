@@ -22,7 +22,7 @@ __pycache__/
 .venv/
 venv/
 
-# Secrets. The Claude enrichment key lives here and must never be committed.
+# Secrets. The enrichment API key lives here and must never be committed.
 # Production needs no key at all: Render serves a static site and runs no Python.
 .env
 .env.*
@@ -39,3 +39,12 @@ Thumbs.db
 # NOTE: web/public/data/*.json and web/src/data/manifest.json ARE committed on
 # purpose. Render runs no Python, so an uncommitted data artifact simply does
 # not exist in production.
+
+# Enrichment: cached model replies and the CSV backups enrich.py writes.
+# The cache is per-advisory and keyed by model, so re-running costs nothing;
+# it is local state, not provenance.
+phase3/enrichment_cache/
+phase3/*.bak.csv
+
+# The enrichment run's log, written next to the project.
+enrich.log

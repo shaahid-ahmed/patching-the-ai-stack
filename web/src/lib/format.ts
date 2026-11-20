@@ -98,3 +98,22 @@ export function spell(value: number): string {
   const rounded = Math.round(value);
   return WORDS[rounded] ?? count(rounded);
 }
+
+const ORDINALS = [
+  "zeroth", "first", "second", "third", "fourth", "fifth", "sixth",
+  "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth",
+];
+
+/**
+ * Spell a rank, so prose can name where something sits without the rank being
+ * typed into the sentence, where it would drift on the next pipeline run.
+ */
+export function ordinal(value: number): string {
+  const rounded = Math.round(value);
+  const word = ORDINALS[rounded];
+  if (word) return word;
+  const rem100 = rounded % 100;
+  if (rem100 >= 11 && rem100 <= 13) return `${count(rounded)}th`;
+  const suffix = { 1: "st", 2: "nd", 3: "rd" }[rounded % 10] ?? "th";
+  return `${count(rounded)}${suffix}`;
+}

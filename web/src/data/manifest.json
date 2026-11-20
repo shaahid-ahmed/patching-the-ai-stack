@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1, 
-  "generatedAt": "2026-11-19T06:43:20.329705+00:00", 
+  "generatedAt": "2026-11-20T02:40:01.418101+00:00", 
   "observedThrough": "2026-10-28T21:15:49+00:00", 
   "counts": {
     "rows": 454, 
@@ -11,7 +11,7 @@
     "withoutFix": 60, 
     "gapMeasurable": 386, 
     "outliers": 25, 
-    "aiSpecific": 138, 
+    "aiSpecific": 150, 
     "negativeGap": 49
   }, 
   "headline": {
@@ -21,34 +21,34 @@
     "negativeShareOfMeasurable": 0.1269, 
     "unpatchedShare": 0.1322
   }, 
-  "labelsPreliminary": true, 
+  "labelsPreliminary": false, 
   "files": {
     "figures": {
-      "q1": "/data/fig-q1.426a1697.json", 
-      "q2": "/data/fig-q2.ad7ad51e.json", 
+      "q1": "/data/fig-q1.89570c36.json", 
+      "q2": "/data/fig-q2.0219522f.json", 
       "q3": "/data/fig-q3.6699437b.json", 
       "q4": "/data/fig-q4.c69a45b6.json", 
-      "q5": "/data/fig-q5.23eb508d.json"
+      "q5": "/data/fig-q5.349baa1c.json"
     }, 
     "detail": {
-      "bentoml": "/data/detail/bentoml.9719166b.json", 
-      "diffusers": "/data/detail/diffusers.f311ab4b.json", 
-      "gradio": "/data/detail/gradio.39ca193a.json", 
-      "keras": "/data/detail/keras.8317f9d1.json", 
-      "langchain": "/data/detail/langchain.cb4e6653.json", 
-      "langchain-community": "/data/detail/langchain-community.b1714cee.json", 
-      "langchain-core": "/data/detail/langchain-core.e948ce87.json", 
-      "litellm": "/data/detail/litellm.56fcd7f0.json", 
-      "llama-index": "/data/detail/llama-index.28007fd6.json", 
-      "llama-index-core": "/data/detail/llama-index-core.e15e0543.json", 
-      "mcp": "/data/detail/mcp.bba4605b.json", 
-      "mlflow": "/data/detail/mlflow.f996d270.json", 
-      "ray": "/data/detail/ray.7dab71db.json", 
-      "torch": "/data/detail/torch.d36a794c.json", 
-      "transformers": "/data/detail/transformers.b4b90805.json", 
-      "vllm": "/data/detail/vllm.ec2c2c25.json"
+      "bentoml": "/data/detail/bentoml.a84801f0.json", 
+      "diffusers": "/data/detail/diffusers.5ab442ce.json", 
+      "gradio": "/data/detail/gradio.31741722.json", 
+      "keras": "/data/detail/keras.b4a548f1.json", 
+      "langchain": "/data/detail/langchain.ed059c9e.json", 
+      "langchain-community": "/data/detail/langchain-community.e84a78f5.json", 
+      "langchain-core": "/data/detail/langchain-core.5f94aecb.json", 
+      "litellm": "/data/detail/litellm.9b4cc54f.json", 
+      "llama-index": "/data/detail/llama-index.27de5b92.json", 
+      "llama-index-core": "/data/detail/llama-index-core.1f6df572.json", 
+      "mcp": "/data/detail/mcp.c0d37b6c.json", 
+      "mlflow": "/data/detail/mlflow.797fde35.json", 
+      "ray": "/data/detail/ray.92a98b9f.json", 
+      "torch": "/data/detail/torch.174a2d9a.json", 
+      "transformers": "/data/detail/transformers.5d29ae91.json", 
+      "vllm": "/data/detail/vllm.febb9427.json"
     }, 
-    "advisories": "/data/advisories.8dab975a.json", 
-    "methods": "/data/methods.63c0445b.json"
+    "advisories": "/data/advisories.1ff51c45.json", 
+    "methods": "/data/methods.4eff0963.json"
   }
 }

@@ -20,6 +20,32 @@ def _share(count: int, total: int) -> float | None:
     return round(count / total, 4) if total else None
 
 
+def _label_source(advisories: pd.DataFrame) -> str | None:
+    if not advisories["label_source"].notna().any():
+        return None
+    return str(advisories["label_source"].mode().iat[0])
+
+
+def _label_note(advisories: pd.DataFrame) -> str:
+    """Describe where the labels came from, rather than asserting it."""
+    base = ("Attack class and the AI-specific flag are assigned by a labelling "
+            "step, not by the advisory itself. ")
+    source = _label_source(advisories)
+    if source is None:
+        return base + "No label source is recorded."
+    if "keyword" in source.lower():
+        return base + ("The current labels come from a keyword fallback and are "
+                       "preliminary.")
+    stale = int(advisories["label_source"].fillna("")
+                .str.lower().str.contains("keyword").sum())
+    note = base + f"The current labels come from {source}."
+    if stale:
+        note += (f" {stale} of {len(advisories)} rows kept the keyword label "
+                 "because the provider declined the advisory text; those stay "
+                 "marked preliminary.")
+    return note
+
+
 def build(advisories: pd.DataFrame) -> dict:
     total = len(advisories)
     classes = []
@@ -99,11 +125,6 @@ def build(advisories: pd.DataFrame) -> dict:
                 for k, v in ai["attack_class"].value_counts().head(5).items()
             ],
         },
-        "label_source": str(advisories["label_source"].mode().iat[0])
-        if advisories["label_source"].notna().any() else None,
-        "note": (
-            "Attack class and the AI-specific flag are assigned by a labelling "
-            "step, not by the advisory itself. The current labels come from a "
-            "keyword fallback and are preliminary."
-        ),
+        "label_source": _label_source(advisories),
+        "note": _label_note(advisories),
     }
